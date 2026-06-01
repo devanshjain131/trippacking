@@ -1,0 +1,233 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  error?: unknown;
+}
+
+const { error } = Astro.props;
+---
+
+<Layout 
+  title="500: Server Error — Trip Packing List" 
+  description="An unexpected error occurred on our end."
+>
+  <Header />
+
+  <div class="relative overflow-hidden w-full flex flex-col items-center flex-1 justify-center py-16 px-6 bg-canvas-soft">
+    <!-- Blueprint Grid Background -->
+    <div class="absolute inset-0 z-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.06)_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-60 pointer-events-none"></div>
+
+    <!-- Ambient Glowing Backdrops -->
+    <div class="absolute top-[20%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] rounded-full bg-gradient-to-tr from-error/10 to-[#f5a623]/10 blur-[100px] pointer-events-none z-0"></div>
+
+    <main class="w-full max-w-4xl mx-auto z-10 flex flex-col items-center text-center">
+      
+      <!-- Visual Server Server Graphic -->
+      <div class="relative mb-8 select-none group flex flex-col items-center">
+        <div class="relative w-40 h-40 flex items-center justify-center border border-hairline rounded-full bg-canvas shadow-level3 mb-4 overflow-hidden">
+          
+          <!-- Server rack visual -->
+          <svg class="w-16 h-16 text-ink/80 z-20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="20" height="7" x="2" y="2" rx="1.5" ry="1.5" />
+            <rect width="20" height="7" x="2" y="15" rx="1.5" ry="1.5" />
+            <!-- Server indicator flashing lights (error warning) -->
+            <circle cx="6" cy="5.5" r="1" fill="#ee0000" class="animate-pulse" />
+            <circle cx="6" cy="18.5" r="1" fill="#ee0000" class="animate-pulse" />
+            <line x1="12" y1="5.5" x2="18" y2="5.5" stroke="currentColor" stroke-width="1" stroke-dasharray="1 1" class="opacity-55" />
+            <line x1="12" y1="18.5" x2="18" y2="18.5" stroke="currentColor" stroke-width="1" stroke-dasharray="1 1" class="opacity-55" />
+          </svg>
+
+          <!-- Warning overlay pulse -->
+          <div class="absolute inset-0 bg-error/[0.03] animate-pulse z-0"></div>
+          
+          <!-- Fault blip ring -->
+          <div class="absolute w-24 h-24 rounded-full border border-error/20 animate-ping z-10" style="animation-duration: 3s;"></div>
+        </div>
+      </div>
+
+      <!-- Glassy card holding details & interactive terminal -->
+      <div class="bg-canvas border border-hairline shadow-level4 rounded-3xl p-8 md:p-12 max-w-2xl w-full mx-auto flex flex-col items-center backdrop-blur-md">
+        
+        <!-- Eyebrow Status Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-error/10 border border-error/20 text-error-deep mb-6">
+          <span class="w-2 h-2 bg-error rounded-full animate-pulse"></span>
+          <span class="font-mono text-xs font-semibold tracking-wider uppercase">Internal Server Error</span>
+        </div>
+
+        <h2 class="text-3xl md:text-4xl font-sans font-bold tracking-tight text-ink mb-3 sentence-case">
+          Oops! Our servers had a hiccup.
+        </h2>
+
+        <p class="text-sm md:text-base text-body/90 font-sans leading-relaxed max-w-lg mb-8">
+          Something went wrong on our side while compiling the packing list. Don't worry, a diagnostic report was generated and our team is troubleshooting.
+        </p>
+
+        <!-- Diagnostic Code Terminal Mockup -->
+        <div class="w-full max-w-lg bg-[#111] text-[#f5f5f5] rounded-xl overflow-hidden shadow-level4 border border-white/5 mb-8 text-left">
+          <!-- Terminal Header -->
+          <div class="bg-[#1a1a1a] px-4 py-2 border-b border-white/5 flex items-center justify-between font-sans">
+            <div class="flex items-center gap-1.5 shrink-0">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></span>
+            </div>
+            <span class="font-mono text-[10px] text-white/40 font-medium uppercase tracking-wider">Console — Diagnostic</span>
+            <button 
+              id="copy-logs-btn"
+              class="font-mono text-[9px] bg-white/5 hover:bg-white/10 text-white/80 active:scale-95 px-2 py-0.5 rounded transition-all shrink-0 cursor-pointer"
+            >
+              Copy Logs
+            </button>
+          </div>
+          <!-- Terminal Body -->
+          <div class="p-4 font-mono text-[11px] leading-relaxed overflow-x-auto select-text">
+            <div class="text-white/40">$ check-service --name=checklist-generator</div>
+            <div class="text-white/80">[INFO]  Connecting to packing database...</div>
+            <div class="text-[#27c93f]">[OK]    Database connection established.</div>
+            <div class="text-[#ffbd2e]">[WARN]  Packing API reporting high thread load.</div>
+            <div class="text-[#ff5f56]">[FATAL] ERR_INTERNAL_SERVER_ERROR (500)</div>
+            <div class="text-white/60 pl-8">Reason: Checklist compilation timed out (threshold > 1000ms)</div>
+            
+            <!-- Collapsible Stack Trace -->
+            <div id="collapsible-trace" class="hidden mt-4 pt-3 border-t border-white/10 text-white/40 animate-fadeIn">
+              <div>Error: API_TIMEOUT_EXCEEDED (500)</div>
+              <div class="pl-4">at generateChecklist (src/utils/checklist.js:42:19)</div>
+              <div class="pl-4">at async Page.render (src/pages/[slug].astro:102:35)</div>
+              <div class="pl-4">at async renderPage (astro/runtime/server/render.js:89:12)</div>
+              {error && (
+                <div class="mt-2 text-white/30 border-t border-white/5 pt-2 max-h-32 overflow-y-auto">
+                  {JSON.stringify(error, null, 2)}
+                </div>
+              )}
+            </div>
+          </div>
+          
+          <!-- Terminal Footer Toggle -->
+          <button 
+            id="toggle-trace-btn"
+            class="w-full bg-[#161616] hover:bg-[#1f1f1f] text-white/60 hover:text-white border-t border-white/5 py-2 text-center font-sans text-[10px] font-semibold tracking-wider uppercase transition-colors shrink-0 cursor-pointer"
+          >
+            Show Technical Details
+          </button>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row items-center gap-3 w-full justify-center">
+          <button 
+            id="retry-page-btn"
+            class="group relative inline-flex items-center justify-center gap-2 h-11 px-6 w-full sm:w-auto rounded-full bg-ink text-white font-medium text-sm overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-level2 cursor-pointer"
+          >
+            <svg id="retry-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:rotate-180 duration-500 shrink-0">
+              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+              <path d="M3 3v5h5"></path>
+            </svg>
+            <span id="retry-text">Try Again</span>
+          </button>
+          
+          <a href="/" class="group inline-flex items-center justify-center gap-2 h-11 px-6 w-full sm:w-auto rounded-full bg-canvas-soft border border-hairline hover:bg-canvas text-ink font-medium text-sm transition-all hover:scale-105 active:scale-95 hover:border-hairline-strong hover:shadow-level1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:-translate-x-0.5 shrink-0">
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            Return Home
+          </a>
+        </div>
+      </div>
+
+      <!-- System Status Monitor Widget -->
+      <div class="mt-12 flex items-center justify-center gap-2 text-xs text-mute font-sans">
+        <span class="relative flex h-2 w-2 shrink-0">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-success"></span>
+        </span>
+        <span>All other services operational</span>
+      </div>
+
+    </main>
+  </div>
+
+  <Footer />
+</Layout>
+
+<script is:inline>
+  // Trace details toggler
+  const toggleBtn = document.getElementById("toggle-trace-btn");
+  const traceDiv = document.getElementById("collapsible-trace");
+  
+  if (toggleBtn && traceDiv) {
+    toggleBtn.addEventListener("click", () => {
+      const isHidden = traceDiv.classList.contains("hidden");
+      if (isHidden) {
+        traceDiv.classList.remove("hidden");
+        toggleBtn.innerText = "Hide Technical Details";
+      } else {
+        traceDiv.classList.add("hidden");
+        toggleBtn.innerText = "Show Technical Details";
+      }
+    });
+  }
+
+  // Copy Logs to Clipboard
+  const copyBtn = document.getElementById("copy-logs-btn");
+  if (copyBtn) {
+    copyBtn.addEventListener("click", () => {
+      const logs = [
+        "check-service --name=checklist-generator",
+        "[INFO]  Connecting to packing database...",
+        "[OK]    Database connection established.",
+        "[WARN]  Packing API reporting high thread load.",
+        "[FATAL] ERR_INTERNAL_SERVER_ERROR (500)",
+        "Reason: Checklist compilation timed out (threshold > 1000ms)",
+        "Error: API_TIMEOUT_EXCEEDED (500)",
+        "    at generateChecklist (src/utils/checklist.js:42:19)",
+        "    at async Page.render (src/pages/[slug].astro:102:35)",
+        "    at async renderPage (astro/runtime/server/render.js:89:12)"
+      ].join("\n");
+      
+      navigator.clipboard.writeText(logs).then(() => {
+        const originalText = copyBtn.innerText;
+        copyBtn.innerText = "Copied!";
+        copyBtn.classList.add("bg-[#27c93f]/25", "text-[#27c93f]");
+        
+        setTimeout(() => {
+          copyBtn.innerText = originalText;
+          copyBtn.classList.remove("bg-[#27c93f]/25", "text-[#27c93f]");
+        }, 2000);
+      });
+    });
+  }
+
+  // Retry loading state simulation
+  const retryBtn = document.getElementById("retry-page-btn");
+  const retryIcon = document.getElementById("retry-icon");
+  const retryText = document.getElementById("retry-text");
+
+  if (retryBtn && retryIcon && retryText) {
+    retryBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      // Disable UI elements
+      retryBtn.disabled = true;
+      retryBtn.classList.add("opacity-80");
+      retryText.innerText = "Retrying...";
+      retryIcon.classList.add("animate-spin");
+      
+      // Short delay, then reload page
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    });
+  }
+</script>
+
+<style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fadeIn {
+    animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+</style>

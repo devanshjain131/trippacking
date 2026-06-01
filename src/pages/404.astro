@@ -1,0 +1,195 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout 
+  title="404: Page Not Found — Trip Packing List" 
+  description="The page you are looking for does not exist or has been moved."
+>
+  <Header />
+
+  <div class="relative overflow-hidden w-full flex flex-col items-center flex-1 justify-center py-16 px-6 bg-canvas-soft">
+    <!-- Blueprint Grid Background -->
+    <div class="absolute inset-0 z-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.06)_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-60 pointer-events-none"></div>
+
+    <!-- Ambient Glowing Backdrops -->
+    <div class="absolute top-[20%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] rounded-full bg-gradient-to-tr from-[#007cf0]/10 to-[#7928ca]/10 blur-[100px] pointer-events-none z-0"></div>
+
+    <main class="w-full max-w-4xl mx-auto z-10 flex flex-col items-center text-center">
+      
+      <!-- Visual Radar Element -->
+      <div class="relative mb-8 select-none group flex flex-col items-center">
+        <div class="relative w-48 h-48 md:w-56 md:h-56 flex items-center justify-center border border-hairline rounded-full bg-canvas shadow-level3 mb-4 overflow-hidden">
+          
+          <!-- Rotating radar sweep -->
+          <div class="absolute w-full h-full animate-radar-sweep pointer-events-none z-10" style="background: conic-gradient(from 0deg, rgba(0, 112, 243, 0.12) 0deg, transparent 120deg);"></div>
+          
+          <!-- Radial grid lines -->
+          <svg class="absolute inset-0 w-full h-full text-hairline-strong/15 z-0" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="0.3" stroke-dasharray="1.5 1.5" />
+            <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" stroke-width="0.3" stroke-dasharray="1.5 1.5" />
+            <circle cx="50" cy="50" r="15" fill="none" stroke="currentColor" stroke-width="0.3" stroke-dasharray="1.5 1.5" />
+            <line x1="50" y1="5" x2="50" y2="95" stroke="currentColor" stroke-width="0.3" stroke-dasharray="1.5 1.5" />
+            <line x1="5" y1="50" x2="95" y2="50" stroke="currentColor" stroke-width="0.3" stroke-dasharray="1.5 1.5" />
+            
+            <!-- Target dot (lost page) -->
+            <circle cx="70" cy="35" r="1.5" fill="#f5a623" class="animate-pulse" />
+            <!-- Blip pulse ring -->
+            <circle cx="70" cy="35" r="4" fill="none" stroke="#f5a623" stroke-width="0.5" class="animate-radar-ping" />
+          </svg>
+
+          <!-- Center Text Display -->
+          <div class="z-20 font-mono text-4xl md:text-5xl font-black tracking-widest text-ink select-none flex flex-col items-center">
+            <span>404</span>
+            <span class="text-[9px] uppercase tracking-[0.25em] text-mute mt-1 animate-pulse">Lost_Coord</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Glassy card holding details & interactive features -->
+      <div class="bg-canvas border border-hairline shadow-level4 rounded-3xl p-8 md:p-12 max-w-2xl w-full mx-auto flex flex-col items-center backdrop-blur-md">
+        
+        <!-- Eyebrow Status Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-warning/10 border border-warning/20 text-warning-deep mb-6">
+          <span class="w-2 h-2 bg-warning rounded-full animate-pulse"></span>
+          <span class="font-mono text-xs font-semibold tracking-wider uppercase">Destination Not Found</span>
+        </div>
+
+        <h2 class="text-3xl md:text-4xl font-sans font-bold tracking-tight text-ink mb-3 sentence-case">
+          Looks like this page went on vacation.
+        </h2>
+
+        <p class="text-sm md:text-base text-body/90 font-sans leading-relaxed max-w-lg mb-8">
+          The coordinates you requested aren't registered on our map. Check the address or search your destination below to generate a packing list right away.
+        </p>
+
+        <!-- Simulated Breadcrumb / Path -->
+        <div class="w-full max-w-md bg-canvas-soft border border-hairline rounded-lg p-2.5 mb-8 flex items-center justify-between font-mono text-[11px] text-mute">
+          <span class="flex items-center gap-1.5">
+            <span class="text-[#007cf0]">trippacking.com</span>
+            <span>/</span>
+            <span class="text-mute">pages</span>
+            <span>/</span>
+            <span class="text-error font-medium line-through">lost-destination</span>
+          </span>
+          <span class="text-[9px] uppercase bg-error/10 text-error px-1.5 py-0.5 rounded font-bold shrink-0">Err_404</span>
+        </div>
+
+        <!-- Functional Redirection Search Widget -->
+        <form id="search-form" class="relative w-full max-w-md mx-auto mb-8 group">
+          <div class="absolute -inset-0.5 bg-gradient-to-r from-[#007cf0] to-[#7928ca] rounded-full opacity-10 group-focus-within:opacity-20 transition duration-300 blur-sm"></div>
+          <div class="relative flex items-center bg-canvas border border-hairline hover:border-hairline-strong focus-within:border-ink rounded-full p-1.5 pl-4 transition-all duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-mute mr-2 shrink-0">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input 
+              id="search-input"
+              type="text" 
+              placeholder="Enter search destination (e.g. London)" 
+              class="w-full bg-transparent border-none text-ink text-sm outline-none placeholder:text-mute focus:ring-0 py-1"
+              required
+            />
+            <button 
+              type="submit" 
+              class="h-8 px-4 rounded-full bg-ink hover:bg-ink/90 text-white font-medium text-xs hover:scale-105 active:scale-95 transition-all select-none shrink-0"
+            >
+              Search
+            </button>
+          </div>
+        </form>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row items-center gap-3 w-full justify-center">
+          <a href="/" class="group relative inline-flex items-center justify-center gap-2 h-11 px-6 w-full sm:w-auto rounded-full bg-ink text-white font-medium text-sm overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-level2">
+            <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/15 to-white/0 -translate-x-full group-hover:animate-shimmer"></div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:-translate-x-1">
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            Return Home
+          </a>
+          
+          <a href="/#trip-packing-checklist" class="group inline-flex items-center justify-center gap-2 h-11 px-6 w-full sm:w-auto rounded-full bg-canvas-soft border border-hairline hover:bg-canvas text-ink font-medium text-sm transition-all hover:scale-105 active:scale-95 hover:border-hairline-strong hover:shadow-level1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:scale-110">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="9" y1="9" x2="15" y2="9"></line>
+              <line x1="9" y1="13" x2="15" y2="13"></line>
+              <line x1="9" y1="17" x2="12" y2="17"></line>
+            </svg>
+            Start Packing
+          </a>
+        </div>
+      </div>
+
+      <!-- Popular Destinations Tags -->
+      <div class="mt-12 flex flex-col items-center gap-4 opacity-90 hover:opacity-100 transition-opacity">
+        <span class="font-mono text-[10px] text-mute font-medium uppercase tracking-[0.25em]">Popular Destinations</span>
+        <div class="flex flex-wrap items-center justify-center gap-2.5 max-w-lg">
+          <a href="/beach-trip-packing-list" class="px-3.5 py-1.5 rounded-xl text-xs font-medium text-body bg-canvas border border-hairline hover:border-hairline-strong hover:text-ink hover:shadow-level2 transition-all duration-200">🏖️ Beach Trip</a>
+          <a href="/road-trip-packing-list" class="px-3.5 py-1.5 rounded-xl text-xs font-medium text-body bg-canvas border border-hairline hover:border-hairline-strong hover:text-ink hover:shadow-level2 transition-all duration-200">🚗 Road Trip</a>
+          <a href="/ski-trip-packing-list" class="px-3.5 py-1.5 rounded-xl text-xs font-medium text-body bg-canvas border border-hairline hover:border-hairline-strong hover:text-ink hover:shadow-level2 transition-all duration-200">⛷️ Ski Trip</a>
+          <a href="/europe-packing-list" class="px-3.5 py-1.5 rounded-xl text-xs font-medium text-body bg-canvas border border-hairline hover:border-hairline-strong hover:text-ink hover:shadow-level2 transition-all duration-200">🇪🇺 Europe</a>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <Footer />
+</Layout>
+
+<script is:inline>
+  // Handle 404 page search list generator redirection
+  const form = document.getElementById("search-form");
+  const input = document.getElementById("search-input");
+  
+  if (form && input) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const destQuery = input.value.trim();
+      if (destQuery) {
+        // Set local storage seed to match generator expectations
+        localStorage.setItem(
+          "preseed_trip_checklist",
+          JSON.stringify({
+            destination: destQuery,
+            climate: "sunny",
+            travelersType: "solo",
+            activities: ["city"]
+          })
+        );
+        // Redirect to home page checklist section
+        window.location.href = "/#trip-packing-checklist";
+      }
+    });
+  }
+</script>
+
+<style>
+  @keyframes radar-sweep {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes radar-ping {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(2.2); opacity: 0; }
+  }
+  @keyframes shimmer {
+    100% { transform: translateX(100%); }
+  }
+  
+  .animate-radar-sweep {
+    animation: radar-sweep 6s linear infinite;
+    transform-origin: center center;
+  }
+  .animate-radar-ping {
+    animation: radar-ping 2.5s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
+    transform-origin: 70px 35px;
+  }
+  .animate-shimmer {
+    animation: shimmer 1.5s infinite;
+  }
+</style>
