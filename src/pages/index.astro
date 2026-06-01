@@ -3,6 +3,9 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
+const currentMonth = new Date().toLocaleString('en-US', { month: 'long' });
+const currentYear = new Date().getFullYear();
+
 const faqs = [
   {
     q: "What is the 5 4 3 2 1 rule for packing?",
@@ -47,6 +50,7 @@ const faqSchema = {
 <Layout 
   title="Trip Packing List — Free Smart Checklist Generator" 
   description="Generate your customized trip packing list in seconds. Track luggage weight dynamically, estimate airline limits, and plan smart. Avoid overweight baggage fees with our free weight calculator."
+  appendMonthYear={true}
 >
   <!-- Sticky Header -->
   <Header />
@@ -65,8 +69,8 @@ const faqSchema = {
       <section class="text-center flex flex-col items-center gap-6 max-w-[800px] mx-auto select-none no-print">
         <!-- New Badge -->
         <span class="inline-flex items-center gap-1.5 px-3 py-1 text-[11px] font-mono font-medium tracking-wide text-body bg-canvas border border-hairline rounded-full shadow-level1 animate-fade-in">
-          <span class="w-1.5 h-1.5 bg-[#0070f3] rounded-full"></span>
-          Trip Packing List • Pack Smart. Travel Light.
+          <span class="w-1.5 h-1.5 bg-[#0070f3] rounded-full shadow-[0_0_8px_rgba(0,112,243,0.6)]"></span>
+          Updated: {currentMonth} {currentYear}
         </span>
 
         <!-- Headline -->

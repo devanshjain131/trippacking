@@ -9,6 +9,7 @@ interface Props {
 	ogDescription?: string;
 	ogUrl?: string;
 	ogImage?: string;
+	appendMonthYear?: boolean;
 }
 
 const {
@@ -18,11 +19,19 @@ const {
 	ogTitle,
 	ogDescription,
 	ogUrl = "https://tripspackinglist.com",
-	ogImage = "https://tripspackinglist.com/og-image.png"
+	ogImage = "https://tripspackinglist.com/og-image.png",
+	appendMonthYear = false
 } = Astro.props;
 
-const finalOgTitle = ogTitle || title;
-const finalOgDescription = ogDescription || description;
+const currentMonth = new Date().toLocaleString('en-US', { month: 'long' });
+const currentYear = new Date().getFullYear();
+const monthYearStr = `${currentMonth} ${currentYear}`;
+
+const finalTitle = appendMonthYear ? `${title} (${monthYearStr})` : title;
+const finalDescription = appendMonthYear ? `${description} (Updated ${monthYearStr})` : description;
+
+const finalOgTitle = ogTitle ? (appendMonthYear ? `${ogTitle} (${monthYearStr})` : ogTitle) : finalTitle;
+const finalOgDescription = ogDescription ? (appendMonthYear ? `${ogDescription} (Updated ${monthYearStr})` : ogDescription) : finalDescription;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://tripspackinglist.com");
 ---
 
@@ -43,8 +52,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://tripspac
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		
 		<!-- SEO Meta Tags -->
-		<title>{title}</title>
-		<meta name="description" content={description} />
+		<title>{finalTitle}</title>
+		<meta name="description" content={finalDescription} />
 		<link rel="canonical" href={canonicalURL} />
 		<meta name="keywords" content={metaKeywords} />
 		<meta name="author" content="Trip Packing List" />
