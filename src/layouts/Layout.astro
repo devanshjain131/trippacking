@@ -13,8 +13,8 @@ interface Props {
 
 const {
 	title = "Trip Packing List — AI Packing Checklist Generator",
-	description = "Create personalized, smart travel packing lists in seconds. Organize your luggage by traveler, calculate bag weight, and adapt checklists for weather.",
-	metaKeywords = "Trip Packing List, beach trip packing list, road trip packing list, ski trip packing list, trip packing list, weekend trip packing list, international trip packing list, business trip packing list, work trip packing list, camping trip packing list, family ski trip packing list, 4 day trip packing list, 2 week trip packing list female, overnight trip packing list, 3 day trip packing list, hiking trip packing list, week trip packing list, lake trip packing list, disney trip packing list, 5 day trip packing list, family road trip packing list, luggage weight tracker, travel checklist generator",
+	description = "Create personalized, smart travel packing lists in seconds. Track luggage weight dynamically, estimate airline limits, and avoid overweight baggage fees.",
+	metaKeywords = "Trip Packing List, beach trip packing list, road trip packing list, ski trip packing list, trip packing list, weekend trip packing list, international trip packing list, business trip packing list, work trip packing list, camping trip packing list, family ski trip packing list, 4 day trip packing list, 2 week trip packing list female, overnight trip packing list, 3 day trip packing list, hiking trip packing list, week trip packing list, lake trip packing list, disney trip packing list, 5 day trip packing list, family road trip packing list, luggage weight tracker, travel checklist generator, bag weight calculator, airline luggage weight estimator, how to pack under 50 lbs, luggage weight calculator, airline baggage scale",
 	ogTitle,
 	ogDescription,
 	ogUrl = "https://tripspackinglist.com",
@@ -23,6 +23,7 @@ const {
 
 const finalOgTitle = ogTitle || title;
 const finalOgDescription = ogDescription || description;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://tripspackinglist.com");
 ---
 
 <!doctype html>
@@ -44,6 +45,7 @@ const finalOgDescription = ogDescription || description;
 		<!-- SEO Meta Tags -->
 		<title>{title}</title>
 		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
 		<meta name="keywords" content={metaKeywords} />
 		<meta name="author" content="Trip Packing List" />
 		
