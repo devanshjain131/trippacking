@@ -1,0 +1,108 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout 
+  title="Privacy Policy — Trip Packing List" 
+  description="Read our privacy practices. We process checklists locally, do not track your personal trips, and value your data privacy."
+>
+  <Header />
+
+  <!-- Decor Background -->
+  <div class="relative overflow-hidden w-full flex flex-col items-center flex-1">
+    <div class="absolute top-[-100px] left-[5%] w-[320px] md:w-[600px] h-[320px] md:h-[600px] rounded-full bg-gradient-to-r from-gradient-develop-start to-gradient-develop-end opacity-15 blur-[80px] md:blur-[120px] animate-mesh-slow-1 pointer-events-none z-0"></div>
+    <div class="absolute top-[20%] right-[5%] w-[280px] md:w-[500px] h-[280px] md:h-[500px] rounded-full bg-gradient-to-r from-gradient-preview-start to-gradient-preview-end opacity-10 blur-[70px] md:blur-[100px] animate-mesh-slow-2 pointer-events-none z-0"></div>
+
+    <main class="w-full max-w-[780px] mx-auto px-6 py-16 md:py-24 z-10 flex flex-col gap-10">
+      
+      <!-- Page Title -->
+      <section class="flex flex-col gap-4">
+        <span class="font-mono text-[11px] text-[#0070f3] font-semibold tracking-wider uppercase">Legal</span>
+        <h1 class="text-4xl md:text-5xl font-sans font-semibold tracking-[-1.5px] text-ink leading-tight">
+          Privacy Policy
+        </h1>
+        <p class="text-base md:text-lg text-body font-sans font-normal leading-relaxed">
+          Last updated: May 31, 2026. We are committed to protecting your personal information.
+        </p>
+      </section>
+
+      <!-- Main Content -->
+      <article class="flex flex-col gap-6 text-sm text-body leading-relaxed select-text">
+        <p>
+          At <strong>Trip Packing List</strong> (accessible from <a href="https://tripspackinglist.com" class="text-link hover:underline">tripspackinglist.com</a>), one of our main priorities is the privacy of our visitors. This Privacy Policy document outlines the types of information we collect and record, and how we use it.
+        </p>
+        <p>
+          If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us through our <a href="/contact-us" class="text-link hover:underline">Contact Us</a> page.
+        </p>
+
+        <h2 class="font-sans font-semibold text-xl tracking-tight text-ink mt-6 border-b border-hairline pb-2">
+          1. 100% Browser Local Storage
+        </h2>
+        <p>
+          Unlike conventional travel apps, we do not require user accounts, emails, or logins. Any data related to your packing lists, itineraries, customized items, passenger categories, or baggage weight counts:
+        </p>
+        <ul class="list-disc pl-5 flex flex-col gap-1 my-2 text-xs text-mute">
+          <li>Is processed entirely in your local browser environment.</li>
+          <li>Is saved directly in your browser's <code>localStorage</code> database.</li>
+          <li>Never gets uploaded to our servers, external APIs, or databases.</li>
+        </ul>
+        <p>
+          You are in full control of your data. You can clear this data at any time by clicking "Reset" in the packing list dashboard or clearing your browser's application cache.
+        </p>
+
+        <h2 class="font-sans font-semibold text-xl tracking-tight text-ink mt-6 border-b border-hairline pb-2">
+          2. Log Files & Diagnostics
+        </h2>
+        <p>
+          Trip Packing List follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this as part of hosting services' analytics. The information collected by log files includes:
+        </p>
+        <ul class="list-disc pl-5 flex flex-col gap-1 my-2 text-xs text-mute">
+          <li>Internet Protocol (IP) addresses.</li>
+          <li>Browser type and version.</li>
+          <li>Internet Service Provider (ISP).</li>
+          <li>Date and time stamp of pages visited.</li>
+          <li>Referring/exit pages and click counts.</li>
+        </ul>
+        <p>
+          These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the site, tracking users' movement on the website, and gathering demographic information.
+        </p>
+
+        <h2 class="font-sans font-semibold text-xl tracking-tight text-ink mt-6 border-b border-hairline pb-2">
+          3. Analytics & Cookies
+        </h2>
+        <p>
+          We use minimal, privacy-centric analytics platforms to measure aggregate website traffic (e.g., number of visitors per day, popular checklist types) to help us improve the service. 
+        </p>
+        <p>
+          Cookies are small text files that are stored on your device. We use basic cookies solely to store UI state preferences (such as your chosen light or dark theme) so that the website renders correctly on subsequent visits. We do not use third-party tracking cookies or advertising cookies.
+        </p>
+
+        <h2 class="font-sans font-semibold text-xl tracking-tight text-ink mt-6 border-b border-hairline pb-2">
+          4. GDPR & CCPA Compliance
+        </h2>
+        <p>
+          Under data protection regulations including the General Data Protection Regulation (GDPR) and the California Consumer Privacy Act (CCPA), you are entitled to key rights regarding your data:
+        </p>
+        <div class="border border-hairline rounded-lg p-5 bg-canvas/40 shadow-level2 my-2 text-xs text-mute flex flex-col gap-2">
+          <p><strong>Right to Access & Deletion:</strong> Because all trip packing list data is stored locally in your browser, you exercise your right to access or delete it directly. Simply view the list inside your browser, or clear your browser's local cache to permanently remove it.</p>
+          <p><strong>Right to Opt-Out:</strong> Since we do not sell, rent, or trade personal data to third parties (nor do we even collect it), CCPA requirements around opting-out of data sales are fully satisfied.</p>
+        </div>
+
+        <h2 class="font-sans font-semibold text-xl tracking-tight text-ink mt-6 border-b border-hairline pb-2">
+          5. Children's Privacy Information
+        </h2>
+        <p>
+          Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity.
+        </p>
+        <p>
+          Trip Packing List does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.
+        </p>
+      </article>
+
+    </main>
+  </div>
+
+  <Footer />
+</Layout>

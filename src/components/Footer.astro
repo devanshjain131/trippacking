@@ -1,0 +1,173 @@
+---
+import { Image } from "astro:assets";
+// Footer.astro - Vercel style footer with animated skyline
+---
+
+<div class="w-full select-none no-print border-t border-hairline mt-auto">
+  <!-- Animated Skyline Scene -->
+  <div class="relative h-[160px] overflow-hidden bg-gradient-to-b from-[#0a0a2e] via-[#0f1035] to-[#1a1a1a] shadow-inner" aria-hidden="true">
+    <!-- Crescent Moon -->
+    <div class="absolute top-5 right-[12%] z-10 opacity-90">
+      <svg width="34" height="34" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18 4C10.3 4 4 10.3 4 18s6.3 14 14 14c2.4 0 4.6-.6 6.6-1.6C20.3 28.8 17 24.8 17 20c0-6.1 4.1-11.2 9.6-12.8C24.3 5.2 21.3 4 18 4z" fill="#f0e6b0" class="drop-shadow-[0_0_8px_#f0e6b0]"/>
+      </svg>
+    </div>
+
+    <!-- Twinkling Stars -->
+    <div class="absolute inset-0 z-0">
+      <div class="absolute w-[2px] h-[2px] bg-white rounded-full top-[10%] left-[8%] animate-twinkle-slow"></div>
+      <div class="absolute w-[2px] h-[2px] bg-white rounded-full top-[25%] left-[16%] animate-twinkle-fast"></div>
+      <div class="absolute w-[2px] h-[2px] bg-white rounded-full top-[15%] left-[28%] animate-twinkle-medium"></div>
+      <div class="absolute w-[2px] h-[2px] bg-white rounded-full top-[8%] left-[42%] animate-twinkle-slow"></div>
+      <div class="absolute w-[2px] h-[2px] bg-white rounded-full top-[30%] left-[56%] animate-twinkle-medium"></div>
+      <div class="absolute w-[2px] h-[2px] bg-white rounded-full top-[18%] left-[70%] animate-twinkle-fast"></div>
+      <div class="absolute w-[2px] h-[2px] bg-white rounded-full top-[12%] left-[82%] animate-twinkle-slow"></div>
+      <div class="absolute w-[2px] h-[2px] bg-white rounded-full top-[28%] left-[90%] animate-twinkle-medium"></div>
+    </div>
+
+    <!-- Animated Plane -->
+    <div class="absolute top-[20%] left-[-100px] z-10 opacity-70 animate-plane">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="rgba(255,255,255,0.75)">
+        <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+      </svg>
+    </div>
+
+    <!-- Skyline SVG building contours -->
+    <svg class="absolute bottom-0 left-0 w-full h-[110px]" viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Far Building Layers (dark indigo tint) -->
+      <g fill="#121235" opacity="0.4">
+        <rect x="30" y="45" width="45" height="75"/>
+        <rect x="120" y="30" width="35" height="90"/>
+        <rect x="250" y="55" width="40" height="65"/>
+        <rect x="420" y="25" width="50" height="95"/>
+        <rect x="580" y="40" width="45" height="80"/>
+        <rect x="730" y="50" width="30" height="70"/>
+        <rect x="880" y="35" width="55" height="85"/>
+        <rect x="1050" y="45" width="40" height="75"/>
+        <rect x="1220" y="20" width="35" height="100"/>
+        <rect x="1340" y="55" width="50" height="65"/>
+      </g>
+      <!-- Main Building Layers (deep slate-charcoal tint) -->
+      <g fill="#171717">
+        <!-- Spire buildings -->
+        <rect x="80" y="55" width="40" height="65"/>
+        <rect x="180" y="40" width="30" height="80"/>
+        <polygon points="180,40 195,20 210,40"/>
+        <rect x="230" y="60" width="55" height="60"/>
+        
+        <rect x="350" y="50" width="40" height="70"/>
+        <rect x="490" y="35" width="45" height="85"/>
+        <polygon points="490,35 512,12 535,35"/>
+        <rect x="550" y="65" width="35" height="55"/>
+
+        <!-- Tallest Central Cluster -->
+        <rect x="680" y="45" width="40" height="75"/>
+        <rect x="740" y="20" width="55" height="100"/>
+        <polygon points="740,20 767.5,0 795,20"/>
+        <rect x="810" y="50" width="35" height="70"/>
+        <rect x="860" y="60" width="45" height="60"/>
+
+        <!-- Right Side Buildings -->
+        <rect x="990" y="40" width="40" height="80"/>
+        <polygon points="990,40 1010,20 1030,40"/>
+        <rect x="1050" y="55" width="45" height="65"/>
+        <rect x="1140" y="30" width="35" height="90"/>
+        <rect x="1200" y="50" width="50" height="70"/>
+        <rect x="1290" y="45" width="40" height="75"/>
+        <rect x="1370" y="60" width="45" height="60"/>
+      </g>
+
+      <!-- Building Windows (lit up) -->
+      <g fill="#fef08a" opacity="0.8">
+        <!-- Cluster 1 Windows -->
+        <rect x="90" y="65" width="3" height="3" class="animate-twinkle-slow"/>
+        <rect x="100" y="75" width="3" height="3" class="animate-twinkle-medium"/>
+        <rect x="90" y="85" width="3" height="3" class="animate-twinkle-fast"/>
+        <rect x="190" y="50" width="3" height="3" class="animate-twinkle-slow"/>
+        <rect x="200" y="65" width="3" height="3" class="animate-twinkle-fast"/>
+        
+        <!-- Cluster 2 Windows -->
+        <rect x="360" y="60" width="3" height="3" class="animate-twinkle-fast"/>
+        <rect x="370" y="70" width="3" height="3" class="animate-twinkle-slow"/>
+        <rect x="500" y="45" width="3" height="3" class="animate-twinkle-medium"/>
+        <rect x="510" y="55" width="3" height="3" class="animate-twinkle-slow"/>
+        <rect x="500" y="68" width="3" height="3" class="animate-twinkle-fast"/>
+
+        <!-- Center Lit Windows -->
+        <rect x="750" y="30" width="3" height="3" class="animate-twinkle-medium"/>
+        <rect x="765" y="30" width="3" height="3" class="animate-twinkle-slow"/>
+        <rect x="750" y="45" width="3" height="3" class="animate-twinkle-fast"/>
+        <rect x="765" y="45" width="3" height="3" class="animate-twinkle-medium"/>
+        <rect x="750" y="60" width="3" height="3" class="animate-twinkle-slow"/>
+        <rect x="765" y="60" width="3" height="3" class="animate-twinkle-fast"/>
+        <rect x="820" y="60" width="3" height="3" class="animate-twinkle-medium"/>
+
+        <!-- Right Lit Windows -->
+        <rect x="1000" y="50" width="3" height="3" class="animate-twinkle-fast"/>
+        <rect x="1015" y="60" width="3" height="3" class="animate-twinkle-slow"/>
+        <rect x="1150" y="45" width="3" height="3" class="animate-twinkle-medium"/>
+        <rect x="1150" y="60" width="3" height="3" class="animate-twinkle-slow"/>
+        <rect x="1210" y="60" width="3" height="3" class="animate-twinkle-fast"/>
+        <rect x="1220" y="70" width="3" height="3" class="animate-twinkle-medium"/>
+        <rect x="1300" y="55" width="3" height="3" class="animate-twinkle-slow"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Main Footer Content -->
+  <footer class="bg-[#111111] text-[#fafafa] py-14 px-6 md:px-12 border-t border-[#222222] select-text">
+    <div class="max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+      <!-- Brand Box -->
+      <div class="col-span-2 flex flex-col gap-4">
+        <a href="/" class="flex items-center gap-2.5 group">
+          <Image 
+            src="/favicon.svg" 
+            alt="Trip Packing List Logo" 
+            width={24}
+            height={24}
+            class="w-6 h-6 rounded-sm object-contain opacity-95 group-hover:opacity-100 transition-opacity"
+          />
+          <span class="font-sans font-semibold tracking-tight text-sm text-[#ffffff] opacity-95 group-hover:opacity-100 transition-opacity">Trip Packing List</span>
+        </a>
+        <p class="text-[13px] text-[#a1a1a1] leading-relaxed max-w-[280px]">
+          The intelligent travel packing list generator designed to streamline your trip planning with smart traveler tabs and a real-time weight calculator.
+        </p>
+      </div>
+
+      <!-- Links Column 1 -->
+      <div class="flex flex-col gap-3">
+        <span class="font-mono text-[11px] font-medium tracking-wider text-[#888888] uppercase">Company</span>
+        <nav class="flex flex-col gap-2.5 text-[13px] text-[#a1a1a1]">
+          <a href="/about-us" class="hover:text-[#ffffff] transition-colors duration-150">About Us</a>
+          <a href="/contact-us" class="hover:text-[#ffffff] transition-colors duration-150">Contact Us</a>
+        </nav>
+      </div>
+
+      <!-- Links Column 2 -->
+      <div class="flex flex-col gap-3">
+        <span class="font-mono text-[11px] font-medium tracking-wider text-[#888888] uppercase">Resources</span>
+        <nav class="flex flex-col gap-2.5 text-[13px] text-[#a1a1a1]">
+          <a href="/" class="hover:text-[#ffffff] transition-colors duration-150">Start Packing</a>
+          <a href="/#faq" class="hover:text-[#ffffff] transition-colors duration-150">FAQs</a>
+        </nav>
+      </div>
+
+      <!-- Links Column 3 -->
+      <div class="flex flex-col gap-3">
+        <span class="font-mono text-[11px] font-medium tracking-wider text-[#888888] uppercase">Legal</span>
+        <nav class="flex flex-col gap-2.5 text-[13px] text-[#a1a1a1]">
+          <a href="/privacy-policy" class="hover:text-[#ffffff] transition-colors duration-150">Privacy Policy</a>
+          <a href="/terms-and-conditions" class="hover:text-[#ffffff] transition-colors duration-150">Terms & Conditions</a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Bottom Copyright -->
+    <div class="max-w-[1200px] mx-auto border-t border-[#222222] pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#888888] gap-4">
+      <span>&copy; {new Date().getFullYear()} Trip Packing List. All rights reserved.</span>
+      <span class="flex items-center gap-1 leading-none select-none">
+        Designed for travelers by Trip Packing List.
+      </span>
+    </div>
+  </footer>
+</div>

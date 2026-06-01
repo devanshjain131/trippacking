@@ -1,0 +1,124 @@
+---
+import { Image } from "astro:assets";
+// Header.astro - Premium custom header
+---
+
+<header class="sticky top-0 z-50 backdrop-blur-md bg-canvas/85 border-b border-hairline h-16 w-full select-none no-print transition-all duration-300">
+  <div class="max-w-[1200px] mx-auto h-full px-6 md:px-8 flex items-center justify-between">
+    <!-- Left Side: Brand with logo first then name -->
+    <div class="flex items-center">
+      <a href="/" class="flex items-center gap-2 md:gap-3 group shrink-0">
+        <!-- Logo First -->
+        <Image 
+          src="/favicon.svg" 
+          alt="Trip Packing List Logo" 
+          width={32}
+          height={32}
+          loading="eager"
+          class="w-7 h-7 md:w-8 h-8 rounded-md object-contain border border-hairline shadow-level1 transition-all duration-300 group-hover:scale-105 group-hover:shadow-level2 group-hover:border-primary/45"
+        />
+        <!-- Name Second -->
+        <span class="font-sans font-black italic uppercase tracking-tighter text-base md:text-xl text-ink leading-none">
+          Trip Packing List
+        </span>
+      </a>
+    </div>
+
+    <!-- Right Side: Action Controls -->
+    <div class="flex items-center gap-3">
+      <!-- Search Button (Scrolls & Focuses Generator Input) -->
+      <button 
+        id="header-search-btn" 
+        class="hidden sm:flex items-center justify-center w-8 h-8 rounded-full hover:bg-canvas-soft-2 text-body hover:text-ink transition-colors duration-150 cursor-pointer"
+        aria-label="Search destination"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-4.5 h-4.5">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+
+      <!-- Divider line -->
+      <div class="hidden sm:block h-4 w-[1px] bg-hairline"></div>
+
+      <!-- Pill Theme Toggle -->
+      <button 
+        id="theme-toggle" 
+        class="w-13 h-6.5 rounded-full bg-canvas-soft-2 border border-hairline flex items-center p-0.5 relative cursor-pointer select-none overflow-hidden shrink-0"
+        aria-label="Toggle theme"
+      >
+        <!-- Sliding Circle -->
+        <div class="w-5 h-5 rounded-full bg-white dark:bg-canvas shadow-level2 transition-all duration-300 absolute left-[2px] top-[2px] transform dark:translate-x-[24px] z-10 pointer-events-none"></div>
+        
+        <!-- Icons container -->
+        <div class="flex items-center justify-between w-full px-1 z-20 pointer-events-none">
+          <!-- Sun Icon (left) -->
+          <svg class="w-3 h-3 text-ink dark:text-mute transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+          </svg>
+          <!-- Moon Icon (right) -->
+          <svg class="w-3 h-3 text-mute dark:text-ink transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </div>
+      </button>
+
+      <!-- Divider line -->
+      <div class="hidden sm:block h-4 w-[1px] bg-hairline"></div>
+
+      <a 
+        href="#trip-packing-checklist" 
+        class="hidden sm:inline-flex items-center justify-center h-8 px-4 rounded-md bg-gradient-to-b from-[#2e2f34] to-[#121316] hover:from-[#3f4046] hover:to-[#1a1b1f] text-[11px] font-sans font-bold text-white shadow-level3 border border-white/5 hover:border-white/10 hover:scale-[1.02] active:scale-[0.98] transition-all duration-150 shrink-0"
+      >
+        Start Packing
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Theme Toggle Logic
+  const themeToggle = document.getElementById("theme-toggle");
+
+  if (themeToggle) {
+    const isDarkActive = () => document.documentElement.classList.contains("dark");
+
+    themeToggle.addEventListener("click", () => {
+      if (isDarkActive()) {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.classList.add("light");
+        localStorage.setItem("theme", "light");
+      } else {
+        document.documentElement.classList.add("dark");
+        document.documentElement.classList.remove("light");
+        localStorage.setItem("theme", "dark");
+      }
+    });
+
+    // Automatically switch if OS theme changes while tab is open (and no manual override)
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (!localStorage.getItem("theme")) {
+        if (e.matches) {
+          document.documentElement.classList.add("dark");
+          document.documentElement.classList.remove("light");
+        } else {
+          document.documentElement.classList.remove("dark");
+          document.documentElement.classList.add("light");
+        }
+      }
+    });
+  }
+
+  // Interactive Search Navigation Trigger
+  const searchBtn = document.getElementById("header-search-btn");
+  if (searchBtn) {
+    searchBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const destInput = document.getElementById("destination");
+      if (destInput) {
+        destInput.focus();
+        destInput.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    });
+  }
+</script>

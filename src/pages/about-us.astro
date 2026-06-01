@@ -1,0 +1,96 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout 
+  title="About Us — Trip Packing List" 
+  description="Learn about the mission, philosophy, and technology behind Trip Packing List. We help travelers plan smart, pack light, and avoid baggage fees."
+>
+  <Header />
+
+  <!-- Decor Background -->
+  <div class="relative overflow-hidden w-full flex flex-col items-center flex-1">
+    <div class="absolute top-[-100px] left-[5%] w-[320px] md:w-[600px] h-[320px] md:h-[600px] rounded-full bg-gradient-to-r from-gradient-develop-start to-gradient-develop-end opacity-15 blur-[80px] md:blur-[120px] animate-mesh-slow-1 pointer-events-none z-0"></div>
+    <div class="absolute top-[20%] right-[5%] w-[280px] md:w-[500px] h-[280px] md:h-[500px] rounded-full bg-gradient-to-r from-gradient-preview-start to-gradient-preview-end opacity-10 blur-[70px] md:blur-[100px] animate-mesh-slow-2 pointer-events-none z-0"></div>
+
+    <main class="w-full max-w-[780px] mx-auto px-6 py-16 md:py-24 z-10 flex flex-col gap-10">
+      
+      <!-- Page Title -->
+      <section class="flex flex-col gap-4">
+        <span class="font-mono text-[11px] text-[#0070f3] font-semibold tracking-wider uppercase">Our Mission</span>
+        <h1 class="text-4xl md:text-5xl font-sans font-semibold tracking-[-1.5px] text-ink leading-tight">
+          About Trip Packing List
+        </h1>
+        <p class="text-base md:text-lg text-body font-sans font-normal leading-relaxed">
+          Helping travelers avoid baggage check surprises, pack precisely, and enjoy stress-free journeys.
+        </p>
+      </section>
+
+      <!-- Main Content -->
+      <article class="flex flex-col gap-6 text-sm text-body leading-relaxed select-text">
+        <p>
+          At <strong>Trip Packing List</strong>, we believe that the best journeys start with peace of mind. Overpacking, forgotten chargers, and last-minute airport scale anxiety are all too common. Our mission is to solve these traveler headaches through intelligent, interactive, and beautifully designed checklist solutions.
+        </p>
+
+        <h2 class="font-sans font-semibold text-xl tracking-tight text-ink mt-6 border-b border-hairline pb-2">
+          The Philosophy of Packing Light
+        </h2>
+        <p>
+          Travel is about the experiences, not the baggage. We design our algorithms and default guides around time-tested packing frameworks that keep your bags manageable:
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-2">
+          <div class="border border-hairline rounded-lg p-5 bg-canvas shadow-level2">
+            <h3 class="font-semibold text-sm text-ink mb-2">The 5-4-3-2-1 Rule</h3>
+            <p class="text-xs text-mute leading-relaxed">
+              Our core minimalist guideline for a standard trip: Pack 5 pairs of socks and underwear, 4 tops, 3 bottoms, 2 pairs of shoes, and 1 hat or heavy jacket. This creates maximum versatility.
+            </p>
+          </div>
+          <div class="border border-hairline rounded-lg p-5 bg-canvas shadow-level2">
+            <h3 class="font-semibold text-sm text-ink mb-2">Capsule Travel Wardrobe</h3>
+            <p class="text-xs text-mute leading-relaxed">
+              Choosing color-coordinated pieces that can be layered. By packing clothing items that serve multiple purposes, you can mix and match to triple your outfit options.
+            </p>
+          </div>
+        </div>
+
+        <p>
+          Our real-time weight tracker estimates standard luggage parameters, alerting you when you are exceeding carry-on limits or approaching airlines' weight thresholds.
+        </p>
+
+        <h2 class="font-sans font-semibold text-xl tracking-tight text-ink mt-6 border-b border-hairline pb-2">
+          Privacy-First Architecture
+        </h2>
+        <p>
+          Your plans are your personal business. Unlike other modern travel assistants, we do not require you to sign up, create an account, or sync data to unknown cloud servers.
+        </p>
+
+        <!-- Privacy Callout Card -->
+        <div class="border border-hairline rounded-lg p-6 bg-canvas/60 backdrop-blur-md shadow-level3 flex flex-col gap-3 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-[#0070f3]/5 rounded-full blur-xl pointer-events-none"></div>
+          <h3 class="font-sans font-semibold text-sm text-ink flex items-center gap-2">
+            <span class="text-link">🔒</span> Local-First Client Storage
+          </h3>
+          <p class="text-xs text-mute leading-relaxed">
+            All checklist items, checked boxes, custom categories, traveler divisions, and saved itineraries are processed 100% locally in your web browser using HTML5 <code>localStorage</code>. No itinerary files, locations, or traveler lists are uploaded to our databases. Your travel data is completely private to you.
+          </p>
+        </div>
+
+        <h2 class="font-sans font-semibold text-xl tracking-tight text-ink mt-6 border-b border-hairline pb-2">
+          Who We Are
+        </h2>
+        <p>
+          We are a team of passionate digital nomads, developers, and global travelers who got tired of checking luggage or paying surprise fee bills at check-in gates. We built Trip Packing List to make traveling light easy, accessible, and structured. 
+        </p>
+        <p>
+          Have questions, suggestions, or want to partner? Visit our <a href="/contact-us" class="text-link hover:text-link-deep font-medium hover:underline">Contact Us</a> page.
+        </p>
+      </article>
+
+    </main>
+  </div>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,1615 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const faqs = [
+  {
+    q: "What is the 5 4 3 2 1 rule for packing?",
+    a: "The 5-4-3-2-1 rule is a popular minimalist packing method designed to help travelers pack efficiently for a week-long trip without overpacking. The rule outlines a simple countdown for your wardrobe: pack exactly five sets of socks and underwear, four versatile tops or shirts that can be layered, three bottoms such as pants, shorts, or skirts, two pairs of comfortable shoes suitable for walking and dining, and one hat or heavy jacket depending on your destination's climate. By adhering strictly to this structured formula, you can easily mix and match items to create a wide variety of outfits. This system ensures that your luggage remains lightweight, fits comfortably into a standard carry-on bag, and eliminates the stress of carrying unnecessary clothing items."
+  },
+  {
+    q: "What to pack on every trip?",
+    a: "Regardless of your destination or the duration of your journey, there are several absolute essentials that you must pack on every single trip. First and foremost, secure your official documentation, including a valid passport or government-issued photo ID, visa documents, and physical credit or debit cards. For health and safety, always carry a small kit of standard emergency medicines, prescription drugs, and basic first-aid supplies. In today's digital world, do not forget your smartphone, a reliable charger, and a universal travel plug adapter to keep your devices powered. Finally, pack personal hygiene items like toothbrushes, toothpaste, and a couple of changes of clean underwear in your carry-on bag, ensuring you remain comfortable even if checked baggage is delayed."
+  },
+  {
+    q: "What is the 3-3-3 rule for travel packing?",
+    a: "The 3-3-3 rule is a highly effective capsule wardrobe formula designed to simplify travel packing and maximize outfit variety with minimal items. To apply this method, you select three versatile tops, three coordinating bottoms, and three distinct pairs of shoes suitable for different occasions. By choosing items that share a cohesive color palette and can be easily layered, these nine pieces can be mixed and matched to generate over a dozen unique outfit combinations. This strategy is ideal for carry-on-only travelers who want to look stylish and prepared for both casual daytime sightseeing and formal evening dinners, all while keeping their suitcase incredibly light, organized, and free from unnecessary clutter."
+  },
+  {
+    q: "What is the 3 5 7 rule for packing?",
+    a: "The 3-5-7 rule is a stay-duration guideline specifically designed for week-long vacations to help you pack efficiently without bringing too much gear. Under this guideline, you pack exactly three pairs of shoes or key accessories, five bottoms such as pants, skirts, or shorts, and seven tops or shirts. By selecting basic, coordinating garments that can be layered and interchanged, you can easily create over fourteen distinct outfits, ensuring you have a fresh look for every day and night of your trip. This balanced approach helps you keep your suitcase light, fits neatly into standard overhead compartments, and prevents you from packing redundant garments that end up unused."
+  },
+  {
+    q: "What is the golden rule of packing?",
+    a: "The golden rule of packing is a classic piece of travel wisdom: lay out all the clothes and money you think you will need for your trip, then take half the clothes and twice the money. Underpacking your wardrobe forces you to focus on highly versatile, lightweight garments that can be worn multiple times, which reduces physical strain and avoids costly airline baggage fees. Meanwhile, doubling your travel funds provides a crucial financial safety net for emergency purchases, unexpected transportation changes, or spontaneous local experiences. This simple philosophy encourages a minimalist, stress-free travel mindset, ensuring you are not weighed down by heavy bags while remaining financially prepared for any situation."
+  },
+  {
+    q: "What are the 5 biggest packing mistakes to avoid?",
+    a: "To ensure a smooth journey, there are five critical packing mistakes every traveler should avoid. First, stop overpacking 'just in case' clothes that you will likely never wear. Second, never put valuable items, critical medications, or essential electronics in checked bags; always keep them in your carry-on. Third, do not ignore airline weight and size limits, as this leads to unexpected and expensive fees at the gate. Fourth, avoid folding bulky garments, and instead use rolling techniques or compression cubes to optimize your space. Finally, never pack liquids unsafely without securing their caps and using waterproof bags, which prevents messy leaks from ruining your clean clothes during transit."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": f.a
+    }
+  }))
+};
+---
+
+<Layout 
+  title="Trip Packing List — Free Smart Checklist Generator" 
+  description="Generate your customized trip packing list in seconds. Plan for beach, road, ski, weekend, camping, international, and business trips. Track luggage weight dynamically."
+>
+  <!-- Sticky Header -->
+  <Header />
+
+  <!-- Hero Decor: Ambient Mesh Gradients -->
+  <div class="relative overflow-hidden w-full flex flex-col items-center">
+    <!-- Mesh Gradient 1 -->
+    <div class="absolute top-[-100px] left-[5%] w-[320px] md:w-[650px] h-[320px] md:h-[650px] rounded-full bg-gradient-to-r from-gradient-develop-start to-gradient-develop-end opacity-20 blur-[70px] md:blur-[120px] animate-mesh-slow-1 pointer-events-none z-0"></div>
+    <!-- Mesh Gradient 2 -->
+    <div class="absolute top-[-50px] right-[5%] w-[280px] md:w-[550px] h-[280px] md:h-[550px] rounded-full bg-gradient-to-r from-gradient-preview-start to-gradient-preview-end opacity-15 blur-[60px] md:blur-[100px] animate-mesh-slow-2 pointer-events-none z-0"></div>
+
+    <!-- Main Container -->
+    <main class="w-full max-w-[1200px] mx-auto px-6 md:px-8 py-16 md:py-24 z-10 flex flex-col gap-20">
+      
+      <!-- Hero Header Section -->
+      <section class="text-center flex flex-col items-center gap-6 max-w-[800px] mx-auto select-none no-print">
+        <!-- New Badge -->
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 text-[11px] font-mono font-medium tracking-wide text-body bg-canvas border border-hairline rounded-full shadow-level1 animate-fade-in">
+          <span class="w-1.5 h-1.5 bg-[#0070f3] rounded-full"></span>
+          Trip Packing List • Pack Smart. Travel Light.
+        </span>
+
+        <!-- Headline -->
+        <h1 class="text-4xl md:text-[56px] font-sans font-semibold tracking-[-2px] text-ink leading-tight">
+          Trip Packing List
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-base md:text-lg text-body font-sans font-normal leading-relaxed max-w-[620px]">
+          Pack smart. Travel light. Customize checklists for any destination, calculate baggage weight in real-time, and stay completely organized.
+        </p>
+
+        <!-- CTAs -->
+        <div class="flex flex-col items-center gap-4 mt-2">
+          <a href="#trip-packing-checklist" class="flex items-center justify-center h-10 px-6 rounded-full bg-primary hover:bg-primary/95 text-sm font-medium text-on-primary shadow-level3 transition-all duration-150">
+            Start Packing
+          </a>
+          
+          <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-mute font-mono">
+            <a href="/about-us" class="hover:text-ink transition-colors">About Us</a>
+            <span class="w-1 h-1 bg-hairline-strong/30 rounded-full"></span>
+            <a href="/contact-us" class="hover:text-ink transition-colors">Contact Us</a>
+            <span class="w-1 h-1 bg-hairline-strong/30 rounded-full"></span>
+            <a href="/privacy-policy" class="hover:text-ink transition-colors">Privacy Policy</a>
+            <span class="w-1 h-1 bg-hairline-strong/30 rounded-full"></span>
+            <a href="/terms-and-conditions" class="hover:text-ink transition-colors">Terms & Conditions</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Generator Section -->
+      <section id="trip-packing-checklist" class="w-full scroll-mt-24">
+        <!-- Dashboard & Form Container -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- LEFT SIDE: Generator Form & Saved Trips Dashboard -->
+          <div class="lg:col-span-4 flex flex-col gap-6 no-print">
+            <!-- Settings Card -->
+            <div class="bg-canvas border border-hairline rounded-lg p-6 shadow-level3 flex flex-col gap-5">
+            <h2 class="font-sans font-semibold text-lg text-ink tracking-tight border-b border-hairline pb-2.5">
+              Trip Settings
+            </h2>
+
+            <form id="generator-form" class="flex flex-col gap-4">
+              <!-- Where To -->
+              <div class="flex flex-col gap-1.5">
+                <label for="destination" class="text-xs font-medium text-body">Where to?</label>
+                <input 
+                  type="text" 
+                  id="destination" 
+                  placeholder="e.g. Tokyo, Paris, Iceland" 
+                  required 
+                  class="h-9 w-full border border-hairline rounded-sm bg-canvas hover:border-hairline-strong focus:border-primary px-3 text-sm text-ink outline-none transition-colors"
+                />
+              </div>
+
+              <!-- How Long -->
+              <div class="flex flex-col gap-1.5">
+                <label for="duration" class="text-xs font-medium text-body">Duration (Days)</label>
+                <select 
+                  id="duration" 
+                  class="h-9 w-full border border-hairline rounded-sm bg-canvas hover:border-hairline-strong focus:border-primary px-2 text-sm text-ink outline-none transition-colors cursor-pointer"
+                >
+                  {Array.from({ length: 30 }, (_, i) => i + 1).map((d) => (
+                    <option value={d} selected={d === 7}>
+                      {d} {d === 1 ? "Day" : "Days"}{d === 3 ? " (Weekend)" : ""}{d === 7 ? " (1 Week)" : ""}{d === 14 ? " (2 Weeks)" : ""}{d === 30 ? " (1 Month)" : ""}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <!-- Climate / Weather -->
+              <div class="flex flex-col gap-1.5">
+                <span class="text-xs font-medium text-body block">Expected Climate</span>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                  <label class="flex items-center gap-2 p-2 border border-hairline rounded-sm bg-canvas hover:bg-canvas-soft cursor-pointer transition-colors">
+                    <input type="radio" name="climate" value="sunny" checked class="accent-primary" />
+                    ☀️ Warm & Sunny
+                  </label>
+                  <label class="flex items-center gap-2 p-2 border border-hairline rounded-sm bg-canvas hover:bg-canvas-soft cursor-pointer transition-colors">
+                    <input type="radio" name="climate" value="autumn" class="accent-primary" />
+                    🍂 Cool / Autumn
+                  </label>
+                  <label class="flex items-center gap-2 p-2 border border-hairline rounded-sm bg-canvas hover:bg-canvas-soft cursor-pointer transition-colors">
+                    <input type="radio" name="climate" value="rainy" class="accent-primary" />
+                    🌧️ Rainy & Wet
+                  </label>
+                  <label class="flex items-center gap-2 p-2 border border-hairline rounded-sm bg-canvas hover:bg-canvas-soft cursor-pointer transition-colors">
+                    <input type="radio" name="climate" value="snowy" class="accent-primary" />
+                    ❄️ Freezing / Snow
+                  </label>
+                </div>
+              </div>
+
+              <!-- Group Type / Travelers -->
+              <div class="flex flex-col gap-1.5">
+                <label for="travelers-type" class="text-xs font-medium text-body">Who is packing?</label>
+                <select 
+                  id="travelers-type" 
+                  class="h-9 w-full border border-hairline rounded-sm bg-canvas hover:border-hairline-strong focus:border-primary px-2 text-sm text-ink outline-none transition-colors cursor-pointer"
+                >
+                  <option value="solo" selected>Just Me (Solo)</option>
+                  <option value="couple">Me + Partner (Couple)</option>
+                  <option value="family">Family (Me, Partner, Kids)</option>
+                </select>
+              </div>
+
+              <!-- Gender Selection Container -->
+              <div id="gender-selection-container" class="flex flex-col gap-3">
+                <!-- Dynamically populated via JS -->
+              </div>
+
+              <!-- Activities -->
+              <div class="flex flex-col gap-1.5">
+                <span class="text-xs font-medium text-body block">Activities planned</span>
+                <div class="flex flex-col gap-2 border border-hairline rounded-sm p-3 bg-canvas-soft text-xs max-h-[150px] overflow-y-auto">
+                  <label class="flex items-center gap-2 cursor-pointer hover:text-ink transition-colors">
+                    <input type="checkbox" name="activities" value="beach" class="accent-primary" />
+                    🏝️ Beach & Swimming
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer hover:text-ink transition-colors">
+                    <input type="checkbox" name="activities" value="hiking" class="accent-primary" />
+                    🏔️ Hiking & Outdoors
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer hover:text-ink transition-colors">
+                    <input type="checkbox" name="activities" value="trekking" class="accent-primary" />
+                    🥾 Trekking & Expedition
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer hover:text-ink transition-colors">
+                    <input type="checkbox" name="activities" value="business" class="accent-primary" />
+                    👔 Business / Conferences
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer hover:text-ink transition-colors">
+                    <input type="checkbox" name="activities" value="city" checked class="accent-primary" />
+                    🌆 City Exploration
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer hover:text-ink transition-colors">
+                    <input type="checkbox" name="activities" value="winter" class="accent-primary" />
+                    🎿 Winter Sports
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer hover:text-ink transition-colors">
+                    <input type="checkbox" name="activities" value="backpacking" class="accent-primary" />
+                    🎒 Backpacking / Budget
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer hover:text-ink transition-colors">
+                    <input type="checkbox" name="activities" value="cruise" class="accent-primary" />
+                    🚢 Cruise & Sailing
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer hover:text-ink transition-colors">
+                    <input type="checkbox" name="activities" value="camping" class="accent-primary" />
+                    ⛺ Camping & Outdoors
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer hover:text-ink transition-colors">
+                    <input type="checkbox" name="activities" value="dining" class="accent-primary" />
+                    🍷 Dining & Nightlife
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer hover:text-ink transition-colors">
+                    <input type="checkbox" name="activities" value="photography" class="accent-primary" />
+                    📸 Photography & Vlogging
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer hover:text-ink transition-colors">
+                    <input type="checkbox" name="activities" value="fitness" class="accent-primary" />
+                    🏃 Gym & Fitness
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer hover:text-ink transition-colors">
+                    <input type="checkbox" name="activities" value="trekking" class="accent-primary" />
+                    🥾 Trekking & Expedition
+                  </label>
+                </div>
+              </div>
+
+              <button 
+                type="submit" 
+                class="h-9 w-full mt-2 rounded-sm bg-primary hover:bg-primary/95 text-xs font-medium text-on-primary shadow-level2 transition-all duration-150"
+              >
+                Start Packing
+              </button>
+            </form>
+          </div>
+
+          <!-- Saved Trips Card -->
+            <div class="bg-canvas border border-hairline rounded-lg p-5 shadow-level3 flex flex-col gap-4">
+              <h3 class="font-sans font-semibold text-[15px] tracking-tight text-ink border-b border-hairline pb-2 flex items-center justify-between">
+                My Saved Trips
+                <span id="saved-trips-count" class="text-xs font-mono text-[#888888] font-normal">0 saved</span>
+              </h3>
+              <div id="saved-trips-list" class="flex flex-col gap-2 max-h-[220px] overflow-y-auto text-xs text-body">
+                <p id="saved-trips-empty" class="text-center py-6 text-[#888888] italic">No saved trips found. Generated lists will auto-save here.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT SIDE: Packing List Dashboard -->
+          <div class="lg:col-span-8 flex flex-col gap-6">
+            
+            <!-- Dashboard Empty State -->
+            <div id="dashboard-empty-state" class="hidden lg:flex bg-canvas border border-hairline rounded-lg p-14 shadow-level3 text-center flex-col items-center gap-4 select-none no-print">
+              <div class="w-12 h-12 bg-canvas-soft-2 border border-hairline rounded-full flex items-center justify-center text-body mb-2 shadow-level1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 16v1a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v1"/>
+                  <path d="M18 8h4a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-4"/>
+                  <path d="M16 8V6a2 2 0 0 0-2-2H3"/>
+                </svg>
+              </div>
+              <h3 class="font-sans font-semibold text-lg text-ink">No checklist active</h3>
+              <p class="text-body text-sm max-w-[340px] leading-relaxed">
+                Configure your trip settings on the left to generate your smart travel packing checklist.
+              </p>
+            </div>
+
+            <!-- Dashboard Loading State -->
+            <div id="dashboard-loading-state" class="hidden bg-canvas border border-hairline rounded-lg p-14 shadow-level3 text-center flex flex-col items-center justify-center gap-4 select-none no-print min-h-[300px]">
+              <div class="relative w-16 h-16 flex items-center justify-center">
+                <div class="absolute inset-0 rounded-full border-2 border-primary/10 border-t-primary animate-spin"></div>
+                <svg class="w-6 h-6 text-primary animate-pulse" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="8" width="18" height="12" rx="2" />
+                  <path d="M8 8V6a2 2 0 012-2h4a2 2 0 012 2v2" />
+                </svg>
+              </div>
+              <h3 class="font-sans font-semibold text-lg text-ink">Analyzing your trip...</h3>
+              <p class="text-body text-xs max-w-[280px] leading-relaxed">
+                Applying local-first packing algorithms and preparing your customized checklist.
+              </p>
+            </div>
+
+            <!-- Main Interactive Checklist (Hidden Initially) -->
+            <div id="packing-dashboard" style="display:none" class="flex flex-col gap-6">
+              
+              <!-- Sticky Progress & Controls Header -->
+              <div class="bg-canvas border border-hairline rounded-lg p-5 shadow-level3 flex flex-col gap-4 no-print select-none">
+                <!-- Row 1: Trip Metadata and Weight -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-hairline pb-4">
+                  <div class="flex flex-col">
+                    <h3 id="dash-trip-title" class="font-sans font-semibold text-xl tracking-tight text-ink">Trip to Tokyo</h3>
+                    <span id="dash-trip-meta" class="text-xs font-mono text-mute mt-0.5">7 Days &bull; Sunny climate &bull; Solo</span>
+                  </div>
+                  
+                  <!-- Weight Calculator Box -->
+                  <div id="luggage-weight-box" class="flex items-center gap-3.5 px-4 py-2 bg-canvas-soft border border-hairline rounded-sm shadow-level1 transition-all duration-300">
+                    <div class="flex flex-col">
+                      <span class="text-[10px] font-mono text-mute uppercase tracking-wider">Bag Weight</span>
+                      <span id="estimated-weight" class="text-sm font-semibold font-mono text-ink">0.0 kg</span>
+                    </div>
+                    <div class="h-6 w-[1px] bg-hairline"></div>
+                    <div class="flex flex-col">
+                      <span class="text-[10px] font-mono text-mute uppercase tracking-wider">Status</span>
+                      <span id="weight-status" class="text-xs font-medium text-success">Within Limit</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Row 2: Progress Bar and Reset -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <!-- Progress bar element -->
+                  <div class="flex-1 flex items-center gap-4">
+                    <span id="packed-ratio" class="text-xs font-mono text-body min-w-[90px]">0 of 0 packed</span>
+                    <div class="flex-1 h-2 bg-canvas-soft-2 border border-hairline rounded-full overflow-hidden">
+                      <div id="packed-progress-fill" class="h-full bg-success transition-all duration-300 w-0"></div>
+                    </div>
+                  </div>
+
+                  <!-- Actions Cluster -->
+                  <div class="flex items-center gap-2">
+                    <button id="reset-checklist-btn" class="h-7 px-3 border border-hairline rounded-sm bg-canvas hover:bg-canvas-soft text-[11px] font-medium text-body hover:text-ink transition-colors duration-150">
+                      Reset
+                    </button>
+                    <button id="print-checklist-btn" class="h-7 px-3 border border-hairline rounded-sm bg-canvas hover:bg-canvas-soft text-[11px] font-medium text-body hover:text-ink transition-colors duration-150 flex items-center gap-1.5">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 6 2 18 2 18 9"/>
+                        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                        <rect x="6" y="14" width="12" height="8"/>
+                      </svg>
+                      Print List
+                    </button>
+                    <button id="save-current-trip-btn" class="h-7 px-3.5 rounded-sm bg-primary hover:bg-primary/90 text-[11px] font-medium text-on-primary shadow-level2 transition-all duration-150">
+                      Save List
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Row 3: Traveler Sub-tabs (Me, Partner, Kids) -->
+                <div id="traveler-tabs-container" class="hidden border-t border-hairline pt-3 flex items-center gap-2 text-xs">
+                  <span class="text-[11px] text-mute font-medium mr-2">Traveler:</span>
+                  <div id="traveler-tabs" class="flex items-center gap-1">
+                    <!-- Tabs dynamically rendered -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- Print View Header (only displays when printing) -->
+              <div class="hidden print-only print-card">
+                <h1 id="print-title" class="text-3xl font-bold font-sans">Trip Packing Checklist</h1>
+                <p id="print-meta" class="text-xs font-mono text-gray-500 mt-1">Generated by TripPackingList.com</p>
+              </div>
+
+              <!-- Checklists Categories Grid -->
+              <div id="categories-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Renders Category Cards dynamically -->
+              </div>
+
+              <!-- Dynamic Category Addition Panel -->
+              <div class="bg-canvas border border-hairline rounded-lg p-5 shadow-level3 flex flex-col sm:flex-row items-center gap-3 no-print select-none">
+                <div class="flex-1 flex flex-col gap-1.5 w-full">
+                  <label for="new-category-input" class="text-xs font-medium text-body">Need an extra category?</label>
+                  <input 
+                    type="text" 
+                    id="new-category-input" 
+                    placeholder="e.g. Baby Gear, Photography Accessories" 
+                    class="h-8 w-full border border-hairline rounded-sm bg-canvas hover:border-hairline-strong px-3 text-xs text-ink outline-none"
+                  />
+                </div>
+                <button 
+                  type="button"
+                  id="add-category-btn" 
+                  class="h-8 w-full sm:w-auto px-5 mt-auto rounded-sm bg-primary hover:bg-primary/95 text-xs font-medium text-on-primary transition-colors shrink-0"
+                >
+                  Create Category
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+
+
+        </div>
+      </section>
+
+      <!-- Popular Destinations Directory -->
+      <section class="border-t border-hairline pt-16 no-print select-none">
+        <div class="flex flex-col gap-3 mb-8 max-w-[600px]">
+          <span class="font-mono text-[11px] text-[#0070f3] font-semibold tracking-wider uppercase">Directories</span>
+          <h2 class="font-sans font-semibold text-2xl md:text-3xl tracking-tight text-ink leading-tight">
+            Popular Travel Checklists
+          </h2>
+          <p class="text-sm text-body">
+            Select a destination-specific packing guide to get detailed recommendations, packing strategies, and checklists.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <a href="/beach-trip-packing-list" class="flex items-center justify-between p-4 border border-hairline rounded-lg bg-canvas hover:border-hairline-strong hover:bg-canvas-soft-2 transition-all group">
+            <span class="text-sm font-medium text-ink flex items-center gap-2">🏝️ Beach Trip Packing List</span>
+            <svg class="w-3.5 h-3.5 text-mute group-hover:text-ink group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+          </a>
+          <a href="/road-trip-packing-list" class="flex items-center justify-between p-4 border border-hairline rounded-lg bg-canvas hover:border-hairline-strong hover:bg-canvas-soft-2 transition-all group">
+            <span class="text-sm font-medium text-ink flex items-center gap-2">🚗 Road Trip Packing List</span>
+            <svg class="w-3.5 h-3.5 text-mute group-hover:text-ink group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+          </a>
+          <a href="/business-trip-packing-list" class="flex items-center justify-between p-4 border border-hairline rounded-lg bg-canvas hover:border-hairline-strong hover:bg-canvas-soft-2 transition-all group">
+            <span class="text-sm font-medium text-ink flex items-center gap-2">👔 Business Trip Packing List</span>
+            <svg class="w-3.5 h-3.5 text-mute group-hover:text-ink group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+          </a>
+          <a href="/cruise-packing-list" class="flex items-center justify-between p-4 border border-hairline rounded-lg bg-canvas hover:border-hairline-strong hover:bg-canvas-soft-2 transition-all group">
+            <span class="text-sm font-medium text-ink flex items-center gap-2">🚢 Cruise Packing List</span>
+            <svg class="w-3.5 h-3.5 text-mute group-hover:text-ink group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+          </a>
+          <a href="/ski-trip-packing-list" class="flex items-center justify-between p-4 border border-hairline rounded-lg bg-canvas hover:border-hairline-strong hover:bg-canvas-soft-2 transition-all group">
+            <span class="text-sm font-medium text-ink flex items-center gap-2">🎿 Ski Trip Packing List</span>
+            <svg class="w-3.5 h-3.5 text-mute group-hover:text-ink group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+          </a>
+          <a href="/europe-packing-list" class="flex items-center justify-between p-4 border border-hairline rounded-lg bg-canvas hover:border-hairline-strong hover:bg-canvas-soft-2 transition-all group">
+            <span class="text-sm font-medium text-ink flex items-center gap-2">🇪🇺 Europe Packing List</span>
+            <svg class="w-3.5 h-3.5 text-mute group-hover:text-ink group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+          </a>
+          <a href="/japan-packing-list" class="flex items-center justify-between p-4 border border-hairline rounded-lg bg-canvas hover:border-hairline-strong hover:bg-canvas-soft-2 transition-all group">
+            <span class="text-sm font-medium text-ink flex items-center gap-2">🇯🇵 Japan Packing List</span>
+            <svg class="w-3.5 h-3.5 text-mute group-hover:text-ink group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+          </a>
+          <a href="/disney-packing-list" class="flex items-center justify-between p-4 border border-hairline rounded-lg bg-canvas hover:border-hairline-strong hover:bg-canvas-soft-2 transition-all group">
+            <span class="text-sm font-medium text-ink flex items-center gap-2">🏰 Disney Packing List</span>
+            <svg class="w-3.5 h-3.5 text-mute group-hover:text-ink group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+          </a>
+          <a href="/weekend-trip-packing-list" class="flex items-center justify-between p-4 border border-hairline rounded-lg bg-canvas hover:border-hairline-strong hover:bg-canvas-soft-2 transition-all group">
+            <span class="text-sm font-medium text-ink flex items-center gap-2">🎒 Weekend Trip Packing List</span>
+            <svg class="w-3.5 h-3.5 text-mute group-hover:text-ink group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+          </a>
+        </div>
+      </section>
+
+      <!-- Company & Support Directory -->
+      <section class="border-t border-hairline pt-16 no-print select-none">
+        <div class="flex flex-col gap-3 mb-8 max-w-[600px]">
+          <span class="font-mono text-[11px] text-[#0070f3] font-semibold tracking-wider uppercase">Info & Support</span>
+          <h2 class="font-sans font-semibold text-2xl md:text-3xl tracking-tight text-ink leading-tight">
+            Company & Resources
+          </h2>
+          <p class="text-sm text-body">
+            Learn more about our mission, privacy practices, terms of service, or get in touch with our team.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+          <a href="/about-us" class="flex flex-col justify-between p-5 border border-hairline rounded-lg bg-canvas hover:border-hairline-strong hover:bg-canvas-soft-2 transition-all group shadow-level1">
+            <div>
+              <span class="text-xl mb-2 block">📖</span>
+              <h3 class="text-sm font-semibold text-ink group-hover:text-primary transition-colors">About Us</h3>
+              <p class="text-xs text-mute mt-1 leading-normal">Our mission, travel philosophy, and local-first technology.</p>
+            </div>
+            <span class="text-xs font-mono text-link hover:text-link-deep mt-4 flex items-center gap-1">
+              Read More
+              <svg class="w-3 h-3 text-mute group-hover:text-ink group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+            </span>
+          </a>
+          <a href="/contact-us" class="flex flex-col justify-between p-5 border border-hairline rounded-lg bg-canvas hover:border-hairline-strong hover:bg-canvas-soft-2 transition-all group shadow-level1">
+            <div>
+              <span class="text-xl mb-2 block">✉️</span>
+              <h3 class="text-sm font-semibold text-ink group-hover:text-primary transition-colors">Contact Us</h3>
+              <p class="text-xs text-mute mt-1 leading-normal">Have suggestions or inquiries? Get in touch with our team.</p>
+            </div>
+            <span class="text-xs font-mono text-link hover:text-link-deep mt-4 flex items-center gap-1">
+              Get in Touch
+              <svg class="w-3 h-3 text-mute group-hover:text-ink group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+            </span>
+          </a>
+          <a href="/privacy-policy" class="flex flex-col justify-between p-5 border border-hairline rounded-lg bg-canvas hover:border-hairline-strong hover:bg-canvas-soft-2 transition-all group shadow-level1">
+            <div>
+              <span class="text-xl mb-2 block">🔒</span>
+              <h3 class="text-sm font-semibold text-ink group-hover:text-primary transition-colors">Privacy Policy</h3>
+              <p class="text-xs text-mute mt-1 leading-normal">Your data stays in your browser. Read our privacy guidelines.</p>
+            </div>
+            <span class="text-xs font-mono text-link hover:text-link-deep mt-4 flex items-center gap-1">
+              View Policy
+              <svg class="w-3 h-3 text-mute group-hover:text-ink group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+            </span>
+          </a>
+          <a href="/terms-and-conditions" class="flex flex-col justify-between p-5 border border-hairline rounded-lg bg-canvas hover:border-hairline-strong hover:bg-canvas-soft-2 transition-all group shadow-level1">
+            <div>
+              <span class="text-xl mb-2 block">📜</span>
+              <h3 class="text-sm font-semibold text-ink group-hover:text-primary transition-colors">Terms & Conditions</h3>
+              <p class="text-xs text-mute mt-1 leading-normal">Our usage terms, luggage disclaimers, and service rules.</p>
+            </div>
+            <span class="text-xs font-mono text-link hover:text-link-deep mt-4 flex items-center gap-1">
+              View Terms
+              <svg class="w-3 h-3 text-mute group-hover:text-ink group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+            </span>
+          </a>
+        </div>
+      </section>
+
+      <!-- SEO Semantic Content Block -->
+      <section class="border-t border-hairline pt-16 flex flex-col gap-8 select-text text-left no-print">
+        <div class="flex flex-col gap-3">
+          <span class="font-mono text-[11px] text-[#0070f3] font-semibold tracking-wider uppercase">SEO Packing Guide</span>
+          <h2 class="font-sans font-semibold text-2xl md:text-3xl tracking-tight text-ink leading-tight">
+            Master Your Travels with the Ultimate Smart Trip Packing List Generator
+          </h2>
+          <p class="text-sm text-body leading-relaxed max-w-[800px]">
+            Whether you are planning a relaxing coastal getaway, an adventurous mountain expedition, or preparing for a demanding corporate summit, generating a detailed and accurate <strong>trip packing list</strong> is the single best way to ensure a stress-free travel experience. Our free, interactive packing checklist generator is built from the ground up to help you coordinate your gear, allocate items by traveler, and precisely compute your baggage weight in real-time. This eliminates the anxiety of airport baggage check-ins and overweight luggage fees. By dynamically adjusting your luggage profile based on your destination, duration, climate, and planned activities, you can travel with absolute peace of mind. Whether you are traveling solo, as a couple, or with children, this tool serves as your ultimate personalized packing assistant. Plan smart, pack light, and explore the world with complete confidence.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-xs text-body leading-relaxed">
+          <div class="flex flex-col gap-4">
+            <h3 class="font-sans font-semibold text-sm text-ink">The Importance of a Destination-Specific Packing List</h3>
+            <p>
+              Different destinations and climates require vastly different packing strategies, and a one-size-fits-all approach often leads to overpacking or forgetting crucial items. For a tropical escape, creating a specialized <strong>beach trip packing list</strong> helps you remember essential items like UV-protective swimsuits, reef-safe sunscreens, sand-proof beach bags, and light cover-ups. If you are packing for a lakeside retreat, a comprehensive <strong>lake trip packing list</strong> will prompt you to include water shoes, insect repellents, and floating gear. For wilderness enthusiasts, a dedicated <strong>hiking trip packing list</strong> covers essential navigation tools, hydration systems, and moisture-wicking activewear that can withstand the elements. If you are sleeping under the stars, a comprehensive <strong>camping trip packing list</strong> guarantees you won't leave behind crucial tools like sleeping pad liners, lanterns, or fire starters.
+            </p>
+            <p>
+              If you are planning to hit the highway, a <strong>road trip packing list</strong> ensures your car is loaded with necessary safety kits, emergency tools, and driving comfort essentials. When traveling with loved ones, planning a <strong>family road trip packing list</strong> helps you coordinate snacks, games, and extra children's items to keep everyone entertained. If you are heading to the snow, compiling a <strong>ski trip packing list</strong> keeps you warm with thermal base layers, helmets, and insulated gloves. If it is a group mountain holiday, generating a <strong>family ski trip packing list</strong> is critical to track gear sizing and equipment allocations for adults and children alike. For family theme park trips, a comprehensive <strong>disney trip packing list</strong> keeps your days magical with comfortable footwear, reusable water bottles, and weather ponchos.
+            </p>
+          </div>
+
+          <div class="flex flex-col gap-4">
+            <h3 class="font-sans font-semibold text-sm text-ink">Professional Journeys, Global Crossings, and Stay Duration Strategy</h3>
+            <p>
+              Business travelers need to remain clean, sharp, and highly structured throughout their journey. Customizing a <strong>business trip packing list</strong> helps you pack blazers, dress shirts, and corporate devices without worrying about wrinkles or forgotten chargers. For shorter professional excursions, a minimalist <strong>work trip packing list</strong> lets you travel light with carry-on bags only, allowing you to bypass baggage claim entirely. If you are crossing borders, building an <strong>international trip packing list</strong> prompts you to double-check passports, universal power adapters, visas, and travel insurance cards well before you reach the airport.
+            </p>
+            <p>
+              The duration of your stay directly dictates your luggage size, laundry requirements, and outfit combinations. For quick getaways, a <strong>weekend trip packing list</strong> or an <strong>overnight trip packing list</strong> focuses on minimalist packing methods, like the renowned 5-4-3-2-1 packing rule, fitting easily into a personal item backpack. Shorter itineraries benefit from a <strong>3 day trip packing list</strong>, a <strong>4 day trip packing list</strong>, or a <strong>5 day trip packing list</strong>, allowing you to cycle casual wear seamlessly without exceeding carry-on weight limits. For longer stays, compiling a <strong>week trip packing list</strong> lets you balance outfits and laundry cycles efficiently. For extended vacations, like a <strong>2 week trip packing list female</strong>, you can plan comprehensive coordinates, versatile layers, cosmetics, and travel-size toiletries, staying completely organized and within airline weight restrictions. By leveraging our advanced, algorithm-driven packing list tool, you take the guesswork out of luggage preparation and ensure you never leave an essential item behind.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section (Accordions) -->
+      <section id="faq" class="border-t border-hairline pt-16 flex flex-col gap-6 no-print">
+        <div class="flex flex-col gap-2 max-w-[600px]">
+          <span class="font-mono text-[11px] text-[#0070f3] font-semibold tracking-wider uppercase">FAQ</span>
+          <h2 class="font-sans font-semibold text-2xl tracking-tight text-ink leading-tight">
+            Frequently Asked Questions
+          </h2>
+          <p class="text-xs text-body">
+            Get practical advice, packing rules, timing guides, and answers for planning your next trip.
+          </p>
+        </div>
+
+        <div class="max-w-[750px] flex flex-col border-t border-hairline mt-4">
+          {faqs.map((faq, index) => (
+            <div class="border-b border-hairline faq-item">
+              <button 
+                class="faq-trigger w-full flex items-center justify-between py-4 text-left font-sans font-semibold text-sm text-ink outline-none hover:text-primary transition-colors cursor-pointer group"
+                data-target={`faq-answer-${index}`}
+              >
+                <span>{faq.q}</span>
+                <span class="transform transition-transform duration-200 text-mute group-hover:text-ink faq-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </span>
+              </button>
+              <div 
+                id={`faq-answer-${index}`} 
+                class="faq-content max-h-0 overflow-hidden transition-all duration-350 ease-in-out"
+              >
+                <p class="text-xs text-body leading-relaxed pb-4 pr-6" set:html={faq.a} />
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+
+      <!-- Schema injection -->
+      <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+    </main>
+  </div>
+
+  <!-- Sticky Skyline Footer -->
+  <Footer />
+</Layout>
+
+<!-- Client side interactive logic script -->
+<script is:inline>
+  // Core default checklist item datasets
+  const BASE_CHECKLIST = {
+    clothing: [
+      { name: "Underwear", weight: 0.05, checked: false },
+      { name: "Socks", weight: 0.04, checked: false },
+      { name: "Sleepwear", weight: 0.20, checked: false },
+      { name: "Casual shirts", weight: 0.15, checked: false },
+      { name: "Casual pants / jeans", weight: 0.50, checked: false },
+      { name: "Comfortable walking shoes", weight: 0.80, checked: false }
+    ],
+    toiletries: [
+      { name: "Toothbrush", weight: 0.02, checked: false },
+      { name: "Toothpaste (Travel size)", weight: 0.08, checked: false },
+      { name: "Deodorant", weight: 0.10, checked: false },
+      { name: "Hairbrush / comb", weight: 0.12, checked: false },
+      { name: "Travel shampoo & body wash", weight: 0.25, checked: false },
+      { name: "Lip balm", weight: 0.01, checked: false }
+    ],
+    tech: [
+      { name: "Smartphone", weight: 0.18, checked: false },
+      { name: "Phone charger", weight: 0.08, checked: false },
+      { name: "Travel power adapter", weight: 0.15, checked: false },
+      { name: "Earbuds / headphones", weight: 0.05, checked: false }
+    ],
+    essentials: [
+      { name: "Passport / ID", weight: 0.05, checked: false },
+      { name: "Flight tickets / booking keys", weight: 0.02, checked: false },
+      { name: "Credit cards / travel money", weight: 0.05, checked: false },
+      { name: "Travel insurance card", weight: 0.01, checked: false }
+    ]
+  };
+
+  const GENDER_ITEMS = {
+    male: {
+      clothing: [
+        { name: "Men's underwear / boxers", weight: 0.05, checked: false },
+        { name: "Undershirts", weight: 0.10, checked: false }
+      ],
+      toiletries: [
+        { name: "Shaving cream & razor", weight: 0.15, checked: false },
+        { name: "Beard oil / aftershave", weight: 0.08, checked: false }
+      ]
+    },
+    female: {
+      clothing: [
+        { name: "Bras / bralettes", weight: 0.04, checked: false },
+        { name: "Feminine underwear", weight: 0.03, checked: false },
+        { name: "Dresses / skirts", weight: 0.25, checked: false }
+      ],
+      toiletries: [
+        { name: "Feminine hygiene products", weight: 0.15, checked: false },
+        { name: "Makeup & cosmetics bag", weight: 0.35, checked: false },
+        { name: "Hair ties / clips", weight: 0.01, checked: false }
+      ]
+    }
+  };
+
+  const KIDS_ITEMS = {
+    clothing: [
+      { name: "Kids' underwear & socks", weight: 0.03, checked: false },
+      { name: "Kids' sleepwear", weight: 0.15, checked: false },
+      { name: "Kids' t-shirts & shorts", weight: 0.10, checked: false },
+      { name: "Kids' light jacket", weight: 0.25, checked: false }
+    ],
+    toiletries: [
+      { name: "Kids' toothbrush & toothpaste", weight: 0.05, checked: false },
+      { name: "Baby / wet wipes", weight: 0.20, checked: false },
+      { name: "Kids' gentle shampoo/soap", weight: 0.15, checked: false }
+    ]
+  };
+
+  const CLIMATE_ITEMS = {
+    sunny: {
+      category: "☀️ Sun & Warm climate Pack",
+      items: [
+        { name: "Sunglasses", weight: 0.04, checked: false },
+        { name: "Sunscreen (SPF 50+)", weight: 0.20, checked: false },
+        { name: "Sun hat / cap", weight: 0.08, checked: false },
+        { name: "Shorts", weight: 0.20, checked: false },
+        { name: "Sandals / flip-flops", weight: 0.30, checked: false }
+      ]
+    },
+    autumn: {
+      category: "🍂 Cool & Autumn Pack",
+      items: [
+        { name: "Light sweater / cardigan", weight: 0.35, checked: false },
+        { name: "Scarf", weight: 0.15, checked: false },
+        { name: "Windproof layering jacket", weight: 0.50, checked: false }
+      ]
+    },
+    rainy: {
+      category: "🌧️ Rainy & Wet weather Pack",
+      items: [
+        { name: "Compact umbrella", weight: 0.30, checked: false },
+        { name: "Waterproof rain shell", weight: 0.45, checked: false },
+        { name: "Water-resistant shoes", weight: 0.90, checked: false }
+      ]
+    },
+    snowy: {
+      category: "❄️ Cold & Snow weather Pack",
+      items: [
+        { name: "Warm wool beanie", weight: 0.08, checked: false },
+        { name: "Thermal underwear base layer", weight: 0.30, checked: false },
+        { name: "Thick winter park coat", weight: 1.30, checked: false },
+        { name: "Insulated winter gloves", weight: 0.15, checked: false },
+        { name: "Neck warmer / scarf", weight: 0.15, checked: false }
+      ]
+    }
+  };
+
+  const ACTIVITY_ITEMS = {
+    beach: {
+      category: "🏝️ Beach & Swim Gear",
+      items: [
+        { name: "Swimsuit / board shorts", weight: 0.15, checked: false },
+        { name: "Microfiber beach towel", weight: 0.25, checked: false },
+        { name: "Beach tote / dry bag", weight: 0.20, checked: false },
+        { name: "Reef-safe sunscreen", weight: 0.15, checked: false }
+      ]
+    },
+    hiking: {
+      category: "🏔️ Hiking & Trail Pack",
+      items: [
+        { name: "Sturdy hiking boots", weight: 1.10, checked: false },
+        { name: "Moisture-wicking shirts (2)", weight: 0.25, checked: false },
+        { name: "Durable hiking trousers", weight: 0.40, checked: false },
+        { name: "Fleece mid-layer", weight: 0.45, checked: false },
+        { name: "Reusable water bottle", weight: 0.20, checked: false },
+        { name: "Small daypack (20L)", weight: 0.50, checked: false }
+      ]
+    },
+    business: {
+      category: "👔 Business & Formal Pack",
+      items: [
+        { name: "Formal suit / blazer", weight: 1.10, checked: false },
+        { name: "Dress shirts / blouses", weight: 0.50, checked: false },
+        { name: "Dress shoes", weight: 0.90, checked: false },
+        { name: "Tie / accessories", weight: 0.05, checked: false },
+        { name: "Laptop & power brick", weight: 1.70, checked: false },
+        { name: "Notepad & pen", weight: 0.15, checked: false }
+      ]
+    },
+    city: {
+      category: "🌆 Urban Explorer Pack",
+      items: [
+        { name: "Comfortable city walking sneakers", weight: 0.70, checked: false },
+        { name: "Crossbody anti-theft bag", weight: 0.30, checked: false },
+        { name: "City guidebook / digital map keys", weight: 0.05, checked: false }
+      ]
+    },
+    winter: {
+      category: "🎿 Winter Sports Gear",
+      items: [
+        { name: "Ski / Snowboarding goggles", weight: 0.15, checked: false },
+        { name: "Waterproof ski jacket", weight: 1.20, checked: false },
+        { name: "Waterproof ski trousers", weight: 0.80, checked: false },
+        { name: "Heavy wool ski socks", weight: 0.10, checked: false }
+      ]
+    },
+    backpacking: {
+      category: "🎒 Backpacking Essentials",
+      items: [
+        { name: "Fast-dry micro towel", weight: 0.12, checked: false },
+        { name: "Sleeping bag liner", weight: 0.22, checked: false },
+        { name: "Combination padlock", weight: 0.05, checked: false },
+        { name: "Rain cover for backpack", weight: 0.08, checked: false },
+        { name: "Compact first aid kit", weight: 0.18, checked: false }
+      ]
+    },
+    cruise: {
+      category: "🚢 Cruise & Sailing Pack",
+      items: [
+        { name: "Formal night attire", weight: 0.80, checked: false },
+        { name: "Sea-sickness medication / bands", weight: 0.05, checked: false },
+        { name: "Lanyard for ship card key", weight: 0.02, checked: false },
+        { name: "Waterproof dry phone bag", weight: 0.10, checked: false }
+      ]
+    },
+    camping: {
+      category: "⛺ Camping & Campfire Gear",
+      items: [
+        { name: "Headlamp / flashlight", weight: 0.15, checked: false },
+        { name: "Insect repellent spray", weight: 0.12, checked: false },
+        { name: "Multi-tool / pocket knife", weight: 0.20, checked: false },
+        { name: "Compact campfire lighter", weight: 0.02, checked: false }
+      ]
+    },
+    dining: {
+      category: "🍷 Dining & Nightlife",
+      items: [
+        { name: "Elegant evening wear / dressy outfit", weight: 0.50, checked: false },
+        { name: "Dressy evening shoes", weight: 0.70, checked: false },
+        { name: "Small clutch / shoulder bag", weight: 0.25, checked: false },
+        { name: "Breath mints / gum", weight: 0.02, checked: false }
+      ]
+    },
+    photography: {
+      category: "📸 Photography & Vlogging",
+      items: [
+        { name: "DSLR / mirrorless camera & strap", weight: 0.90, checked: false },
+        { name: "Extra camera battery & charger", weight: 0.25, checked: false },
+        { name: "Spare high-speed SD memory cards", weight: 0.02, checked: false },
+        { name: "Microfiber lens cleaning cloth", weight: 0.01, checked: false }
+      ]
+    },
+    fitness: {
+      category: "🏃 Gym & Fitness Pack",
+      items: [
+        { name: "Gym shirts & workout shorts", weight: 0.25, checked: false },
+        { name: "Running / workout sneakers", weight: 0.70, checked: false },
+        { name: "Quick-dry workout towel", weight: 0.10, checked: false },
+        { name: "Fitness tracker watch", weight: 0.05, checked: false }
+      ]
+    },
+    trekking: {
+      category: "🥾 Trekking & Expedition Pack",
+      items: [
+        { name: "Trekking poles (collapsible)", weight: 0.50, checked: false },
+        { name: "High-altitude wool socks", weight: 0.10, checked: false },
+        { name: "Blister prevention tape / bandages", weight: 0.05, checked: false },
+        { name: "Trail map / offline GPS app keys", weight: 0.05, checked: false },
+        { name: "Energy bars / trail snacks", weight: 0.30, checked: false }
+      ]
+    }
+  };
+
+  // State Management variables
+  let currentTrip = {
+    id: "",
+    destination: "",
+    duration: 7,
+    climate: "sunny",
+    travelersType: "solo",
+    genders: { "Me": "neutral" },
+    activities: ["city"],
+    travelers: {
+      solo: {
+        "Me": JSON.parse(JSON.stringify(BASE_CHECKLIST))
+      },
+      couple: {
+        "Me": JSON.parse(JSON.stringify(BASE_CHECKLIST)),
+        "Partner": JSON.parse(JSON.stringify(BASE_CHECKLIST))
+      },
+      family: {
+        "Me": JSON.parse(JSON.stringify(BASE_CHECKLIST)),
+        "Partner": JSON.parse(JSON.stringify(BASE_CHECKLIST)),
+        "Kids": JSON.parse(JSON.stringify(BASE_CHECKLIST))
+      }
+    },
+    activeTraveler: "Me"
+  };
+
+  // Local storage management keys
+  const STORAGE_KEY = "trips_packing_lists";
+
+  // Elements mapping
+  const form = document.getElementById("generator-form");
+  const dashboardEmpty = document.getElementById("dashboard-empty-state");
+  const dashboard = document.getElementById("packing-dashboard");
+  const categoriesGrid = document.getElementById("categories-grid");
+  const packedRatio = document.getElementById("packed-ratio");
+  const packedProgressFill = document.getElementById("packed-progress-fill");
+  const estimatedWeightEl = document.getElementById("estimated-weight");
+  const weightStatusEl = document.getElementById("weight-status");
+  const luggageWeightBox = document.getElementById("luggage-weight-box");
+  const tripTitleEl = document.getElementById("dash-trip-title");
+  const tripMetaEl = document.getElementById("dash-trip-meta");
+  const resetBtn = document.getElementById("reset-checklist-btn");
+  const printBtn = document.getElementById("print-checklist-btn");
+  const saveTripBtn = document.getElementById("save-current-trip-btn");
+  const savedTripsList = document.getElementById("saved-trips-list");
+  const savedTripsEmpty = document.getElementById("saved-trips-empty");
+  const savedTripsCount = document.getElementById("saved-trips-count");
+  const travelerTabsContainer = document.getElementById("traveler-tabs-container");
+  const travelerTabs = document.getElementById("traveler-tabs");
+  const addCategoryBtn = document.getElementById("add-category-btn");
+  const newCategoryInput = document.getElementById("new-category-input");
+
+  // Function to render gender fields in generator form based on traveler selection
+  function updateGenderFormFields() {
+    const container = document.getElementById("gender-selection-container");
+    if (!container) return;
+    
+    const type = document.getElementById("travelers-type").value;
+    container.innerHTML = "";
+    
+    if (type === "solo") {
+      container.innerHTML = `
+        <div class="flex flex-col gap-1.5 animate-fadeIn">
+          <label for="gender-me" class="text-[11px] font-medium text-body">Your Gender</label>
+          <select id="gender-me" class="gender-select h-9 w-full border border-hairline rounded-sm bg-canvas hover:border-hairline-strong focus:border-primary px-2 text-xs text-ink outline-none transition-colors cursor-pointer">
+            <option value="neutral" selected>Unisex / Neutral</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+      `;
+    } else if (type === "couple") {
+      container.innerHTML = `
+        <div class="grid grid-cols-2 gap-2 animate-fadeIn">
+          <div class="flex flex-col gap-1.5">
+            <label for="gender-me" class="text-[11px] font-medium text-body">Your Gender</label>
+            <select id="gender-me" class="gender-select h-9 w-full border border-hairline rounded-sm bg-canvas hover:border-hairline-strong focus:border-primary px-2 text-xs text-ink outline-none transition-colors cursor-pointer">
+              <option value="neutral" selected>Unisex / Neutral</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label for="gender-partner" class="text-[11px] font-medium text-body">Partner's Gender</label>
+            <select id="gender-partner" class="gender-select h-9 w-full border border-hairline rounded-sm bg-canvas hover:border-hairline-strong focus:border-primary px-2 text-xs text-ink outline-none transition-colors cursor-pointer">
+              <option value="neutral" selected>Unisex / Neutral</option>
+              <option value="male">Male</option>
+              <option value="female" selected>Female</option>
+            </select>
+          </div>
+        </div>
+      `;
+    } else if (type === "family") {
+      container.innerHTML = `
+        <div class="grid grid-cols-2 gap-2 animate-fadeIn">
+          <div class="flex flex-col gap-1.5">
+            <label for="gender-me" class="text-[11px] font-medium text-body">Your Gender</label>
+            <select id="gender-me" class="gender-select h-9 w-full border border-hairline rounded-sm bg-canvas hover:border-hairline-strong focus:border-primary px-2 text-xs text-ink outline-none transition-colors cursor-pointer">
+              <option value="neutral" selected>Unisex / Neutral</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label for="gender-partner" class="text-[11px] font-medium text-body">Partner's Gender</label>
+            <select id="gender-partner" class="gender-select h-9 w-full border border-hairline rounded-sm bg-canvas hover:border-hairline-strong focus:border-primary px-2 text-xs text-ink outline-none transition-colors cursor-pointer">
+              <option value="neutral" selected>Unisex / Neutral</option>
+              <option value="male">Male</option>
+              <option value="female" selected>Female</option>
+            </select>
+          </div>
+        </div>
+      `;
+    }
+  }
+
+  // DOMContentLoaded initialization
+  window.addEventListener("DOMContentLoaded", () => {
+    updateGenderFormFields();
+    document.getElementById("travelers-type").addEventListener("change", updateGenderFormFields);
+    loadSavedTripsFromStorage();
+    
+    // Auto-load last saved trip if it exists
+    const savedTrips = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    if (savedTrips.length > 0) {
+      loadTrip(savedTrips[0]);
+    }
+    
+    checkPreseededTrip();
+    setupFaqAccordions();
+  });
+
+  // Auto-save trip when user leaves or refreshes the page
+  window.addEventListener("beforeunload", () => {
+    if (currentTrip.id) {
+      saveTripToLocalStorage(currentTrip);
+    }
+  });
+
+  // Check if a checklist was pre-seeded from an SEO page
+  function checkPreseededTrip() {
+    const rawSeed = localStorage.getItem("preseed_trip_checklist");
+    if (rawSeed) {
+      try {
+        const seed = JSON.parse(rawSeed);
+        
+        // Populate form inputs
+        document.getElementById("destination").value = seed.destination;
+        const climateInput = document.querySelector(`input[name="climate"][value="${seed.climate}"]`);
+        if (climateInput) climateInput.checked = true;
+        
+        const travelersInput = document.getElementById("travelers-type");
+        if (travelersInput) {
+          travelersInput.value = seed.travelersType;
+          updateGenderFormFields();
+        }
+        
+        uncheckAllActivities();
+        seed.activities.forEach(act => checkActivity(act));
+        
+        // Generate checklist
+        generateNewTripChecklist(seed.destination, 7, seed.climate, seed.travelersType, seed.activities);
+        
+        // Clear pre-seed token
+        localStorage.removeItem("preseed_trip_checklist");
+        
+        // Scroll to generator smoothly
+        setTimeout(() => {
+          const genSection = document.getElementById("trip-packing-checklist");
+          if (genSection) genSection.scrollIntoView({ behavior: "smooth" });
+        }, 150);
+      } catch (err) {
+        console.error("Error loading pre-seeded trip:", err);
+      }
+    }
+  }
+
+  // Handle Form Submission / Generation
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const destVal = document.getElementById("destination").value;
+    const durVal = parseInt(document.getElementById("duration").value, 10);
+    const climateVal = document.querySelector('input[name="climate"]:checked').value;
+    const travelersVal = document.getElementById("travelers-type").value;
+    
+    // Checked activities
+    const actCheckboxEls = document.querySelectorAll('input[name="activities"]:checked');
+    const activitiesArr = Array.from(actCheckboxEls).map(el => el.value);
+
+    // Show Loading state
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `<span class="inline-block w-3.5 h-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2"></span> Generating...`;
+
+    const loadingState = document.getElementById("dashboard-loading-state");
+    if (dashboardEmpty) dashboardEmpty.style.display = "none";
+    if (dashboard) dashboard.style.display = "none";
+    if (loadingState) loadingState.style.display = "flex";
+
+    setTimeout(() => {
+      if (loadingState) loadingState.style.display = "none";
+      generateNewTripChecklist(destVal, durVal, climateVal, travelersVal, activitiesArr);
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalText;
+
+      // Scroll to checklist on mobile so user sees results
+      setTimeout(() => {
+        if (dashboard && window.innerWidth < 1024) {
+          dashboard.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 100);
+    }, 750);
+  });
+
+
+
+  function uncheckAllActivities() {
+    document.querySelectorAll('input[name="activities"]').forEach(cb => cb.checked = false);
+  }
+
+  function checkActivity(val) {
+    const cb = document.querySelector(`input[name="activities"][value="${val}"]`);
+    if (cb) cb.checked = true;
+  }
+
+  // Dynamic Generator Algorithm
+  function generateNewTripChecklist(dest, duration, climate, travelersType, activities, genders) {
+    // Generate trip ID or use existing
+    const tripId = Date.now().toString();
+
+    // Reset default checklist base copies
+    const travelerGroupKeys = travelersType === "solo" ? ["Me"] :
+                              travelersType === "couple" ? ["Me", "Partner"] :
+                              ["Me", "Partner", "Kids"];
+
+    // Retrieve genders if not explicitly passed
+    let gendersVal = genders;
+    if (!gendersVal) {
+      gendersVal = {};
+      const meEl = document.getElementById("gender-me");
+      const partnerEl = document.getElementById("gender-partner");
+      const kidsEl = document.getElementById("gender-kids");
+      
+      if (meEl) gendersVal["Me"] = meEl.value;
+      else gendersVal["Me"] = "neutral";
+      
+      if (partnerEl) gendersVal["Partner"] = partnerEl.value;
+      if (kidsEl) gendersVal["Kids"] = kidsEl.value;
+    }
+
+    const travelersData = {};
+    
+    travelerGroupKeys.forEach(traveler => {
+      // Deep Copy Base checklist
+      const listCopy = JSON.parse(JSON.stringify(BASE_CHECKLIST));
+
+      // Append gender-specific or kids-specific items for this traveler
+      if (traveler === "Kids" && KIDS_ITEMS) {
+        KIDS_ITEMS.clothing.forEach(item => {
+          listCopy.clothing.push(JSON.parse(JSON.stringify(item)));
+        });
+        KIDS_ITEMS.toiletries.forEach(item => {
+          listCopy.toiletries.push(JSON.parse(JSON.stringify(item)));
+        });
+      } else {
+        const travelerGender = gendersVal[traveler] || "neutral";
+        if (travelerGender === "male" && GENDER_ITEMS.male) {
+          GENDER_ITEMS.male.clothing.forEach(item => {
+            listCopy.clothing.push(JSON.parse(JSON.stringify(item)));
+          });
+          GENDER_ITEMS.male.toiletries.forEach(item => {
+            listCopy.toiletries.push(JSON.parse(JSON.stringify(item)));
+          });
+        } else if (travelerGender === "female" && GENDER_ITEMS.female) {
+          GENDER_ITEMS.female.clothing.forEach(item => {
+            listCopy.clothing.push(JSON.parse(JSON.stringify(item)));
+          });
+          GENDER_ITEMS.female.toiletries.forEach(item => {
+            listCopy.toiletries.push(JSON.parse(JSON.stringify(item)));
+          });
+        }
+      }
+
+      // Append climate items if present
+      if (CLIMATE_ITEMS[climate]) {
+        listCopy.climate_pack = JSON.parse(JSON.stringify(CLIMATE_ITEMS[climate].items));
+      }
+
+      // Append activity items
+      activities.forEach(act => {
+        if (ACTIVITY_ITEMS[act]) {
+          listCopy[`activity_${act}`] = JSON.parse(JSON.stringify(ACTIVITY_ITEMS[act].items));
+        }
+      });
+
+      travelersData[traveler] = listCopy;
+    });
+
+    // Populate Current Trip Object
+    currentTrip = {
+      id: tripId,
+      destination: dest,
+      duration: duration,
+      climate: climate,
+      travelersType: travelersType,
+      genders: gendersVal,
+      activities: activities,
+      travelers: travelersData,
+      activeTraveler: "Me"
+    };
+
+
+    // Render Dashboard
+    renderDashboard();
+    
+    // Load Trips list
+    loadSavedTripsFromStorage();
+  }
+
+  // Render Dashboard Layout & Interactivity
+  function renderDashboard() {
+    // Show checklist block, hide empty state
+    dashboardEmpty.style.display = "none";
+    dashboard.style.display = "flex";
+
+    // Title & Meta Text
+    tripTitleEl.innerText = `Trip to ${currentTrip.destination}`;
+    
+    const climateLabel = currentTrip.climate.charAt(0).toUpperCase() + currentTrip.climate.slice(1);
+    const travelerLabel = currentTrip.travelersType === "solo" ? "Solo" : 
+                          currentTrip.travelersType === "couple" ? "Me & Partner" : "Family trip";
+    const activeGender = (currentTrip.genders && currentTrip.genders[currentTrip.activeTraveler]) || "neutral";
+    const activeGenderLabel = activeGender.charAt(0).toUpperCase() + activeGender.slice(1);
+    if (currentTrip.activeTraveler === "Kids") {
+      tripMetaEl.innerHTML = `${currentTrip.duration} Days &bull; ${climateLabel} weather &bull; ${travelerLabel} &bull; Type: Kids`;
+    } else {
+      tripMetaEl.innerHTML = `${currentTrip.duration} Days &bull; ${climateLabel} weather &bull; ${travelerLabel} &bull; Gender: ${activeGenderLabel}`;
+    }
+
+    // Render Tabs for Travelers
+    renderTravelerTabs();
+
+    // Render Lists of Categories
+    renderCategoryCards();
+
+    // Refresh progress state & weight
+    updateProgressAndWeight();
+  }
+
+  // Render Traveler Tab elements
+  function renderTravelerTabs() {
+    const travelers = Object.keys(currentTrip.travelers);
+    
+    if (travelers.length > 1) {
+      travelerTabsContainer.classList.remove("hidden");
+      travelerTabs.innerHTML = "";
+      
+      travelers.forEach(travelerName => {
+        const isActive = currentTrip.activeTraveler === travelerName;
+        let genderEmoji = "";
+        if (travelerName !== "Kids") {
+          const gender = (currentTrip.genders && currentTrip.genders[travelerName]) || "neutral";
+          genderEmoji = gender === "male" ? " ♂️" : gender === "female" ? " ♀️" : "";
+        }
+        const tabEl = document.createElement("button");
+        tabEl.className = `h-6 px-3 rounded-full border text-[11px] font-medium tracking-tight transition-all ${
+          isActive 
+            ? "bg-primary text-on-primary border-primary shadow-level2" 
+            : "bg-canvas text-body border-hairline hover:text-ink hover:bg-canvas-soft"
+        }`;
+        tabEl.innerText = `${travelerName}${genderEmoji}`;
+        tabEl.addEventListener("click", () => {
+          currentTrip.activeTraveler = travelerName;
+          renderTravelerTabs();
+          renderCategoryCards();
+          updateProgressAndWeight();
+        });
+        
+        travelerTabs.appendChild(tabEl);
+      });
+    } else {
+      travelerTabsContainer.classList.add("hidden");
+    }
+  }
+
+  // Render list of item category cards
+  function renderCategoryCards() {
+    categoriesGrid.innerHTML = "";
+    
+    // Get checklist categories for currently active traveler
+    const list = currentTrip.travelers[currentTrip.activeTraveler];
+
+    Object.keys(list).forEach(categoryKey => {
+      const items = list[categoryKey];
+      if (!items) return;
+
+      // Map nice category title
+      let title = "";
+      if (categoryKey === "clothing") title = "👕 Clothing & Apparels";
+      else if (categoryKey === "toiletries") title = "🧴 Toiletries & Grooming";
+      else if (categoryKey === "tech") title = "🔌 Chargers & Tech";
+      else if (categoryKey === "essentials") title = "📁 Essential Documents";
+      else if (categoryKey === "climate_pack") title = CLIMATE_ITEMS[currentTrip.climate].category;
+      else if (categoryKey.startsWith("activity_")) {
+        const actName = categoryKey.replace("activity_", "");
+        title = ACTIVITY_ITEMS[actName] ? ACTIVITY_ITEMS[actName].category : "🎯 Activity Pack";
+      } else {
+        // Custom created category title
+        title = categoryKey;
+      }
+
+      // Create Card Outer
+      const cardEl = document.createElement("div");
+      cardEl.className = "bg-canvas border border-hairline rounded-lg p-5 shadow-level3 flex flex-col justify-between hover:border-hairline-strong transition-colors print-card";
+
+      // Card Header
+      const headerEl = document.createElement("div");
+      headerEl.className = "flex items-center justify-between border-b border-hairline pb-2.5 mb-3";
+      
+      const titleEl = document.createElement("h4");
+      titleEl.className = "font-sans font-semibold text-sm text-ink tracking-tight";
+      titleEl.innerText = title;
+      headerEl.appendChild(titleEl);
+
+      // Delete Category Action
+      const deleteCatBtn = document.createElement("button");
+      deleteCatBtn.className = "text-[10px] text-mute hover:text-error transition-colors font-medium no-print";
+      deleteCatBtn.innerText = "Delete Category";
+      deleteCatBtn.addEventListener("click", () => {
+        delete currentTrip.travelers[currentTrip.activeTraveler][categoryKey];
+
+        renderCategoryCards();
+        updateProgressAndWeight();
+      });
+      headerEl.appendChild(deleteCatBtn);
+      
+      cardEl.appendChild(headerEl);
+
+      // Items list container
+      const listEl = document.createElement("div");
+      listEl.className = "flex flex-col gap-2 mb-4";
+
+      items.forEach((item, index) => {
+        const itemRow = document.createElement("div");
+        itemRow.className = "flex items-center justify-between gap-2 text-xs py-0.5";
+
+        const leftEl = document.createElement("label");
+        leftEl.className = `flex items-center gap-2.5 cursor-pointer font-sans select-none ${
+          item.checked ? "text-mute line-through" : "text-ink"
+        }`;
+        
+        // Checkbox element
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = item.checked;
+        checkbox.className = "accent-primary w-3.5 h-3.5 border-hairline rounded-sm transition-all print-checkbox";
+        
+        checkbox.addEventListener("change", () => {
+          item.checked = checkbox.checked;
+          if (item.checked) {
+            leftEl.classList.add("text-mute", "line-through");
+            leftEl.classList.remove("text-ink");
+          } else {
+            leftEl.classList.add("text-ink");
+            leftEl.classList.remove("text-mute", "line-through");
+          }
+
+          updateProgressAndWeight();
+        });
+
+        leftEl.appendChild(checkbox);
+        
+        const labelText = document.createElement("span");
+        labelText.innerText = `${item.name} (${item.weight}kg)`;
+        leftEl.appendChild(labelText);
+        
+        itemRow.appendChild(leftEl);
+
+        // Delete item button
+        const deleteItemBtn = document.createElement("button");
+        deleteItemBtn.className = "text-mute hover:text-error transition-colors no-print p-1";
+        deleteItemBtn.innerHTML = `
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="3 6 5 6 21 6"></polyline>
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+          </svg>
+        `;
+        deleteItemBtn.addEventListener("click", () => {
+          items.splice(index, 1);
+
+          renderCategoryCards();
+          updateProgressAndWeight();
+        });
+        
+        itemRow.appendChild(deleteItemBtn);
+        listEl.appendChild(itemRow);
+      });
+
+      cardEl.appendChild(listEl);
+
+      // Add Custom Item Form
+      const addForm = document.createElement("div");
+      addForm.className = "flex items-center gap-1.5 pt-2 border-t border-canvas-soft-2 no-print";
+      
+      const itemInput = document.createElement("input");
+      itemInput.type = "text";
+      itemInput.placeholder = "Add item name...";
+      itemInput.className = "h-7 flex-1 border border-hairline rounded-sm px-2 text-[11px] bg-canvas outline-none focus:border-hairline-strong";
+      
+      const weightInput = document.createElement("input");
+      weightInput.type = "number";
+      weightInput.step = "0.01";
+      weightInput.placeholder = "0.15";
+      weightInput.title = "Item weight in kg";
+      weightInput.className = "h-7 w-12 border border-hairline rounded-sm px-1.5 text-[11px] text-center bg-canvas outline-none focus:border-hairline-strong font-mono";
+
+      const addBtn = document.createElement("button");
+      addBtn.type = "button";
+      addBtn.className = "h-7 px-2.5 rounded-sm bg-primary text-on-primary text-[11px] font-semibold flex items-center justify-center";
+      addBtn.innerText = "+";
+      
+      addBtn.addEventListener("click", () => {
+        const nameVal = itemInput.value.trim();
+        const weightVal = parseFloat(weightInput.value) || 0.15;
+        
+        if (nameVal) {
+          items.push({ name: nameVal, weight: weightVal, checked: false });
+
+          renderCategoryCards();
+          updateProgressAndWeight();
+        }
+      });
+
+      // Enter key submits
+      itemInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") addBtn.click();
+      });
+      weightInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") addBtn.click();
+      });
+
+      addForm.appendChild(itemInput);
+      addForm.appendChild(weightInput);
+      addForm.appendChild(addBtn);
+      
+      cardEl.appendChild(addForm);
+
+      categoriesGrid.appendChild(cardEl);
+    });
+  }
+
+  // Create new custom categories
+  addCategoryBtn.addEventListener("click", () => {
+    const catName = newCategoryInput.value.trim();
+    if (catName) {
+      // Add empty list mapping to currently active traveler
+      if (!currentTrip.travelers[currentTrip.activeTraveler][catName]) {
+        currentTrip.travelers[currentTrip.activeTraveler][catName] = [];
+
+        renderCategoryCards();
+        newCategoryInput.value = "";
+      }
+    }
+  });
+
+  newCategoryInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") addCategoryBtn.click();
+  });
+
+  // Reset all checked states on current checklist
+  resetBtn.addEventListener("click", () => {
+    const list = currentTrip.travelers[currentTrip.activeTraveler];
+    Object.keys(list).forEach(cat => {
+      list[cat].forEach(item => {
+        item.checked = false;
+      });
+    });
+
+    renderCategoryCards();
+    updateProgressAndWeight();
+  });
+
+  // Print Checklist Trigger
+  printBtn.addEventListener("click", () => {
+    // Sync print layout metadata
+    document.getElementById("print-title").innerText = `Trip Packing List — Packing for ${currentTrip.destination}`;
+    const labels = currentTrip.travelersType === "solo" ? "Solo traveler" : 
+                   currentTrip.travelersType === "couple" ? "2 Travelers" : "Family group";
+    document.getElementById("print-meta").innerHTML = `${currentTrip.duration} days trip &bull; Climate: ${currentTrip.climate} &bull; ${labels} &bull; active list: ${currentTrip.activeTraveler}`;
+    
+    window.print();
+  });
+
+  // Save/Update current list in storage
+  saveTripBtn.addEventListener("click", () => {
+    saveTripToLocalStorage(currentTrip);
+    loadSavedTripsFromStorage();
+    
+    // Brief Vercel-style toast feedback simulation
+    const originalText = saveTripBtn.innerText;
+    saveTripBtn.innerText = "Saved ✓";
+    saveTripBtn.classList.add("bg-[#0070f3]");
+    setTimeout(() => {
+      saveTripBtn.innerText = originalText;
+      saveTripBtn.classList.remove("bg-[#0070f3]");
+    }, 2000);
+  });
+
+  // Calculate & Refresh packed items metrics
+  function updateProgressAndWeight() {
+    const list = currentTrip.travelers[currentTrip.activeTraveler];
+    
+    let totalItems = 0;
+    let packedItems = 0;
+    let totalWeight = 0;
+
+    Object.keys(list).forEach(cat => {
+      list[cat].forEach(item => {
+        totalItems++;
+        if (item.checked) {
+          packedItems++;
+          totalWeight += item.weight;
+        }
+      });
+    });
+
+    // Ratio display
+    packedRatio.innerText = `${packedItems} of ${totalItems} packed`;
+    
+    // Bar fill
+    const pct = totalItems > 0 ? (packedItems / totalItems) * 100 : 0;
+    packedProgressFill.style.width = `${pct}%`;
+
+    // Weight display
+    estimatedWeightEl.innerText = `${totalWeight.toFixed(2)} kg`;
+
+    // Weight warning rules
+    // 0 to 7kg = within carry on (Green)
+    // 7kg to 23kg = within check-in limits (Orange)
+    // > 23kg = Warning heavy baggage (Red)
+    if (totalWeight <= 7.0) {
+      weightStatusEl.innerText = "Carry-on OK";
+      weightStatusEl.className = "text-xs font-semibold font-mono text-[#0070f3]"; // blue success link
+      luggageWeightBox.className = "flex items-center gap-3.5 px-4 py-2 bg-canvas-soft border border-hairline rounded-sm shadow-level1 transition-all duration-300 border-[#d3e5ff]";
+    } else if (totalWeight <= 23.0) {
+      weightStatusEl.innerText = "Checked Baggage";
+      weightStatusEl.className = "text-xs font-semibold font-mono text-[#f5a623]"; // warning orange
+      luggageWeightBox.className = "flex items-center gap-3.5 px-4 py-2 bg-canvas-soft border border-hairline rounded-sm shadow-level1 transition-all duration-300 border-[#ffefcf]";
+    } else {
+      weightStatusEl.innerText = "Overweight Alert";
+      weightStatusEl.className = "text-xs font-semibold font-mono text-[#ee0000] animate-pulse"; // error red
+      luggageWeightBox.className = "flex items-center gap-3.5 px-4 py-2 bg-canvas-soft border border-[#ee0000] rounded-sm shadow-level2 transition-all duration-300";
+    }
+  }
+
+  // Storage Functions
+  function saveTripToLocalStorage(trip) {
+    let saved = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    // Remove if already exists to prevent duplicate entries
+    saved = saved.filter(t => t.id !== trip.id);
+    
+    // Add current trip
+    saved.unshift(trip);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+  }
+
+  // Load a trip's data into form inputs and dashboard
+  function loadTrip(trip) {
+    currentTrip = trip;
+    renderDashboard();
+    
+    // Fill form values to match loaded trip
+    document.getElementById("destination").value = trip.destination;
+    document.getElementById("duration").value = trip.duration;
+    
+    const climateEl = document.querySelector(`input[name="climate"][value="${trip.climate}"]`);
+    if (climateEl) climateEl.checked = true;
+    
+    document.getElementById("travelers-type").value = trip.travelersType;
+    
+    // Populate gender settings in form
+    updateGenderFormFields();
+    if (trip.genders) {
+      if (trip.genders["Me"] && document.getElementById("gender-me")) {
+        document.getElementById("gender-me").value = trip.genders["Me"];
+      }
+      if (trip.genders["Partner"] && document.getElementById("gender-partner")) {
+        document.getElementById("gender-partner").value = trip.genders["Partner"];
+      }
+      if (trip.genders["Kids"] && document.getElementById("gender-kids")) {
+        document.getElementById("gender-kids").value = trip.genders["Kids"];
+      }
+    }
+    
+    
+    uncheckAllActivities();
+    trip.activities.forEach(act => checkActivity(act));
+
+    // Scroll to dashboard
+    setTimeout(() => {
+      const db = document.getElementById("packing-dashboard");
+      if (db) {
+        db.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 150);
+  }
+
+  function loadSavedTripsFromStorage() {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    
+    savedTripsCount.innerText = `${saved.length} saved`;
+
+    if (saved.length === 0) {
+      savedTripsEmpty.classList.remove("hidden");
+      savedTripsList.innerHTML = "";
+      savedTripsList.appendChild(savedTripsEmpty);
+      return;
+    }
+
+    savedTripsEmpty.classList.add("hidden");
+    savedTripsList.innerHTML = "";
+
+    saved.forEach(trip => {
+      // Create saved row container
+      const row = document.createElement("div");
+      row.className = "flex items-center justify-between gap-2 p-2 border border-hairline rounded-sm bg-canvas hover:bg-canvas-soft-2 transition-all group";
+      
+      const label = document.createElement("span");
+      label.className = "font-medium truncate flex-1 cursor-pointer hover:text-ink";
+      label.innerText = `✈️ ${trip.destination} (${trip.duration}d)`;
+      label.addEventListener("click", () => {
+        loadTrip(trip);
+      });
+      row.appendChild(label);
+
+      // Delete trip button
+      const delBtn = document.createElement("button");
+      delBtn.className = "opacity-0 group-hover:opacity-100 text-mute hover:text-error transition-all p-1 no-print";
+      delBtn.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      `;
+      delBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        
+        let localSaved = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+        localSaved = localSaved.filter(t => t.id !== trip.id);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(localSaved));
+        
+        // If current dashboard is showing deleted trip, reset dashboard view
+        if (currentTrip.id === trip.id) {
+          dashboard.style.display = "none";
+          dashboardEmpty.style.display = "";
+          currentTrip = { id: "", destination: "", duration: 7, climate: "sunny", travelersType: "solo", activities: ["city"], travelers: {}, activeTraveler: "Me" };
+        }
+
+        loadSavedTripsFromStorage();
+      });
+
+      row.appendChild(delBtn);
+      savedTripsList.appendChild(row);
+    });
+  }
+
+  // FAQ Accordion Toggle Script
+  function setupFaqAccordions() {
+    document.querySelectorAll(".faq-trigger").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const targetId = btn.getAttribute("data-target");
+        const content = document.getElementById(targetId);
+        const icon = btn.querySelector(".faq-icon");
+        
+        if (content) {
+          const isOpen = content.style.maxHeight && content.style.maxHeight !== "0px";
+          
+          // Close all FAQs first for accordion effect
+          document.querySelectorAll(".faq-content").forEach(c => {
+            c.style.maxHeight = "0px";
+          });
+          document.querySelectorAll(".faq-icon").forEach(i => {
+            i.style.transform = "rotate(0deg)";
+          });
+          
+          if (!isOpen) {
+            content.style.maxHeight = content.scrollHeight + "px";
+            if (icon) icon.style.transform = "rotate(180deg)";
+          }
+        }
+      });
+    });
+  }
+</script>

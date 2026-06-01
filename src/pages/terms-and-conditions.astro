@@ -1,0 +1,99 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout 
+  title="Terms & Conditions — Trip Packing List" 
+  description="Read the Terms of Service for using Trip Packing List. Free personal checklist generation, luggage limits disclaimer, and usage terms."
+>
+  <Header />
+
+  <!-- Decor Background -->
+  <div class="relative overflow-hidden w-full flex flex-col items-center flex-1">
+    <div class="absolute top-[-100px] left-[5%] w-[320px] md:w-[600px] h-[320px] md:h-[600px] rounded-full bg-gradient-to-r from-gradient-develop-start to-gradient-develop-end opacity-15 blur-[80px] md:blur-[120px] animate-mesh-slow-1 pointer-events-none z-0"></div>
+    <div class="absolute top-[20%] right-[5%] w-[280px] md:w-[500px] h-[280px] md:h-[500px] rounded-full bg-gradient-to-r from-gradient-preview-start to-gradient-preview-end opacity-10 blur-[70px] md:blur-[100px] animate-mesh-slow-2 pointer-events-none z-0"></div>
+
+    <main class="w-full max-w-[780px] mx-auto px-6 py-16 md:py-24 z-10 flex flex-col gap-10">
+      
+      <!-- Page Title -->
+      <section class="flex flex-col gap-4">
+        <span class="font-mono text-[11px] text-[#0070f3] font-semibold tracking-wider uppercase">Legal</span>
+        <h1 class="text-4xl md:text-5xl font-sans font-semibold tracking-[-1.5px] text-ink leading-tight">
+          Terms & Conditions
+        </h1>
+        <p class="text-base md:text-lg text-body font-sans font-normal leading-relaxed">
+          Last updated: May 31, 2026. Please read these terms carefully before using our service.
+        </p>
+      </section>
+
+      <!-- Main Content -->
+      <article class="flex flex-col gap-6 text-sm text-body leading-relaxed select-text">
+        <p>
+          Welcome to <strong>Trip Packing List</strong>! These terms and conditions outline the rules and regulations for the use of Trip Packing List's Website, located at <a href="https://tripspackinglist.com" class="text-link hover:underline">tripspackinglist.com</a>.
+        </p>
+        <p>
+          By accessing this website, we assume you accept these terms and conditions in full. Do not continue to use Trip Packing List if you do not agree to take all of the terms and conditions stated on this page.
+        </p>
+
+        <h2 class="font-sans font-semibold text-xl tracking-tight text-ink mt-6 border-b border-hairline pb-2">
+          1. Intellectual Property Rights
+        </h2>
+        <p>
+          Unless otherwise stated, Trip Packing List and/or its licensors own the intellectual property rights for all material on Trip Packing List. All intellectual property rights are reserved. You may access this from Trip Packing List for your own personal use subjected to restrictions set in these terms and conditions.
+        </p>
+        <p>
+          You must not:
+        </p>
+        <ul class="list-disc pl-5 flex flex-col gap-1 my-2 text-xs text-mute">
+          <li>Republish material, assets, or specific checklist item sets from Trip Packing List.</li>
+          <li>Sell, rent, or sub-license material from Trip Packing List.</li>
+          <li>Reproduce, duplicate, or copy material or algorithms from Trip Packing List.</li>
+          <li>Redistribute content from Trip Packing List (unless content is specifically made for redistribution, such as printed PDF checklists).</li>
+        </ul>
+
+        <h2 class="font-sans font-semibold text-xl tracking-tight text-ink mt-6 border-b border-hairline pb-2">
+          2. Free Personal Use License
+        </h2>
+        <p>
+          Trip Packing List is provided as a free tool for personal, non-commercial use. Users are permitted to generate, edit, print, download, and customize checklists for their own trips or those of their immediate group (family, friends). Commercial utilization, bundling checklists inside paid applications, or scraping content for other commercial sites is strictly prohibited.
+        </p>
+
+        <h2 class="font-sans font-semibold text-xl tracking-tight text-ink mt-6 border-b border-hairline pb-2">
+          3. Baggage & Metric Disclaimers
+        </h2>
+        <p>
+          We build our packing guides and weights to assist travelers in planning their trips. However, traveling involves variables beyond our control.
+        </p>
+        <!-- Disclaimer warning card -->
+        <div class="border border-warning-deep/20 rounded-lg p-5 bg-warning-soft/20 backdrop-blur-md shadow-level2 flex flex-col gap-2 relative overflow-hidden">
+          <h3 class="font-sans font-semibold text-sm text-warning-deep flex items-center gap-2">
+            <span>⚠️</span> Important luggage specifications alert
+          </h3>
+          <p class="text-xs text-body leading-relaxed">
+            All weight metrics, calculations, luggage dimensions, carry-on allowances, and recommendations provided by Trip Packing List are estimations for general guidance. Individual items, bag types, packing techniques, and airline policies vary. It is the sole responsibility of the traveler to verify actual luggage weights on verified physical scales and cross-check size allowances with their operating airlines. We are not responsible for any excess weight fees, booking denials, or packing gaps.
+          </p>
+        </div>
+
+        <h2 class="font-sans font-semibold text-xl tracking-tight text-ink mt-6 border-b border-hairline pb-2">
+          4. Disclaimer of Liability
+        </h2>
+        <p>
+          To the maximum extent permitted by applicable law, we exclude all representations, warranties, and conditions relating to our website and the use of this website. Nothing in this disclaimer will:
+        </p>
+        <ul class="list-disc pl-5 flex flex-col gap-1 my-2 text-xs text-mute">
+          <li>Limit or exclude our or your liability for death or personal injury.</li>
+          <li>Limit or exclude our or your liability for fraud or fraudulent misrepresentation.</li>
+          <li>Limit any of our or your liabilities in any way that is not permitted under applicable law.</li>
+        </ul>
+        <p>
+          As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.
+        </p>
+      </article>
+
+    </main>
+  </div>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,83 @@
+---
+import "../styles/global.css";
+
+interface Props {
+	title?: string;
+	description?: string;
+	metaKeywords?: string;
+	ogTitle?: string;
+	ogDescription?: string;
+	ogUrl?: string;
+	ogImage?: string;
+}
+
+const {
+	title = "Trip Packing List — AI Packing Checklist Generator",
+	description = "Create personalized, smart travel packing lists in seconds. Organize your luggage by traveler, calculate bag weight, and adapt checklists for weather.",
+	metaKeywords = "Trip Packing List, beach trip packing list, road trip packing list, ski trip packing list, trip packing list, weekend trip packing list, international trip packing list, business trip packing list, work trip packing list, camping trip packing list, family ski trip packing list, 4 day trip packing list, 2 week trip packing list female, overnight trip packing list, 3 day trip packing list, hiking trip packing list, week trip packing list, lake trip packing list, disney trip packing list, 5 day trip packing list, family road trip packing list, luggage weight tracker, travel checklist generator",
+	ogTitle,
+	ogDescription,
+	ogUrl = "https://tripspackinglist.com",
+	ogImage = "https://tripspackinglist.com/og-image.png"
+} = Astro.props;
+
+const finalOgTitle = ogTitle || title;
+const finalOgDescription = ogDescription || description;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth overflow-x-hidden">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+		<!-- SEO Meta Tags -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="keywords" content={metaKeywords} />
+		<meta name="author" content="Trip Packing List" />
+		
+		<!-- OpenGraph Meta Tags -->
+		<meta property="og:title" content={finalOgTitle} />
+		<meta property="og:description" content={finalOgDescription} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={ogUrl} />
+		<meta property="og:site_name" content="Trip Packing List" />
+		<meta property="og:image" content={ogImage} />
+		
+		<!-- Twitter Card Meta Tags -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={finalOgTitle} />
+		<meta name="twitter:description" content={finalOgDescription} />
+		<meta name="twitter:site" content="@tripspackinglist" />
+		<meta name="twitter:image" content={ogImage} />
+		
+		<!-- Favicons -->
+		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<meta name="apple-mobile-web-app-title" content="Trip Packing" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<meta name="generator" content={Astro.generator} />
+
+		<!-- Google Fonts for Geist and Geist Mono -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<!-- Theme Detection Script -->
+		<script is:inline>
+			(function() {
+				const savedTheme = localStorage.getItem('theme');
+				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+				if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+					document.documentElement.classList.add('dark');
+				} else if (savedTheme === 'light') {
+					document.documentElement.classList.add('light');
+				}
+			})();
+		</script>
+	</head>
+	<body class="min-h-screen flex flex-col bg-canvas-soft text-ink select-text selection:bg-primary selection:text-on-primary overflow-x-hidden">
+		<slot />
+	</body>
+</html>
