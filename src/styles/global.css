@@ -76,9 +76,9 @@
   }
 
   @keyframes plane-fly {
-    0% { left: -100px; transform: translateY(0px) rotate(5deg); }
-    50% { transform: translateY(-20px) rotate(0deg); }
-    100% { left: 105%; transform: translateY(10px) rotate(-5deg); }
+    0% { transform: translateX(0) translateY(0px) rotate(5deg); }
+    50% { transform: translateX(55vw) translateY(-20px) rotate(0deg); }
+    100% { transform: translateX(calc(100vw + 200px)) translateY(10px) rotate(-5deg); }
   }
 }
 
@@ -88,7 +88,7 @@
   --on-primary: #ffffff;
   --ink: #171717;
   --body: #4d4d4d;
-  --mute: #888888;
+  --mute: #666666;
   --hairline: #ebebeb;
   --hairline-strong: #a1a1a1;
   --canvas: #ffffff;
@@ -112,7 +112,7 @@
   --on-primary: #000000;
   --ink: #ffffff;
   --body: #a1a1a1;
-  --mute: #666666;
+  --mute: #8c8c8c;
   --hairline: #222222;
   --hairline-strong: #444444;
   --canvas: #0a0a0a;
@@ -136,7 +136,7 @@
     --on-primary: #000000;
     --ink: #ffffff;
     --body: #a1a1a1;
-    --mute: #666666;
+    --mute: #8c8c8c;
     --hairline: #222222;
     --hairline-strong: #444444;
     --canvas: #0a0a0a;
@@ -168,10 +168,12 @@
   input[type="number"]::-webkit-outer-spin-button,
   input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
+    appearance: none;
     margin: 0;
   }
   input[type="number"] {
     -moz-appearance: textfield;
+    appearance: textfield;
   }
 }
 

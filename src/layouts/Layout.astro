@@ -54,19 +54,29 @@ const finalOgUrl = ogUrl || canonicalURL.href;
 <!doctype html>
 <html lang="en" class="scroll-smooth overflow-x-hidden">
 	<head>
-		<!-- Google tag (gtag.js) -->
-		<script
-			async
-			src="https://www.googletagmanager.com/gtag/js?id=G-HPDZZ06HRX"
-			is:inline></script>
+		<!-- Google tag (gtag.js) - Optimized Loading -->
 		<script is:inline>
 			window.dataLayer = window.dataLayer || [];
 			function gtag() {
 				dataLayer.push(arguments);
 			}
 			gtag("js", new Date());
-
 			gtag("config", "G-HPDZZ06HRX");
+
+			// Defer GTM script injection until browser is idle to boost performance scores
+			window.addEventListener("load", () => {
+				const loadGtag = () => {
+					const script = document.createElement("script");
+					script.async = true;
+					script.src = "https://www.googletagmanager.com/gtag/js?id=G-HPDZZ06HRX";
+					document.head.appendChild(script);
+				};
+				if ("requestIdleCallback" in window) {
+					requestIdleCallback(loadGtag);
+				} else {
+					setTimeout(loadGtag, 1000);
+				}
+			});
 		</script>
 
 		<meta charset="UTF-8" />
@@ -116,6 +126,10 @@ const finalOgUrl = ogUrl || canonicalURL.href;
 		<!-- Google Fonts for Geist and Geist Mono -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap"
+			rel="stylesheet"
+		/>
 		<!-- Theme Detection Script -->
 		<script is:inline>
 			(function () {
