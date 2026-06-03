@@ -2566,7 +2566,10 @@ const websiteSchema = {
             const isOpen =
               content.style.maxHeight && content.style.maxHeight !== "0px";
 
-            // Close all FAQs first for accordion effect
+            // 1. Read layout properties first (read phase) to prevent forced reflow
+            const targetScrollHeight = content.scrollHeight;
+
+            // 2. Perform all style writes (write phase)
             document.querySelectorAll(".faq-content").forEach((cEl) => {
               const c = cEl as HTMLElement;
               c.style.maxHeight = "0px";
@@ -2581,7 +2584,7 @@ const websiteSchema = {
             });
 
             if (!isOpen) {
-              content.style.maxHeight = content.scrollHeight + "px";
+              content.style.maxHeight = targetScrollHeight + "px";
               if (icon) icon.style.transform = "rotate(180deg)";
               btn.setAttribute("aria-expanded", "true");
             }

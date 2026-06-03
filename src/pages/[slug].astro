@@ -2269,6 +2269,10 @@ const faqSchema = {
             const isOpen =
               content.style.maxHeight && content.style.maxHeight !== "0px";
 
+            // 1. Read layout properties first (read phase) to prevent forced reflow
+            const targetScrollHeight = content.scrollHeight;
+
+            // 2. Perform all style writes (write phase)
             document.querySelectorAll(".faq-content").forEach((elEl) => {
               const el = elEl as HTMLElement;
               el.style.maxHeight = "0px";
@@ -2283,7 +2287,7 @@ const faqSchema = {
             });
 
             if (!isOpen) {
-              content.style.maxHeight = `${content.scrollHeight}px`;
+              content.style.maxHeight = `${targetScrollHeight}px`;
               if (icon) icon.style.transform = "rotate(180deg)";
               trigger.setAttribute("aria-expanded", "true");
             }
