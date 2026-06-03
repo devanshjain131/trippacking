@@ -419,7 +419,7 @@ const faqSchema = {
                     type="text"
                     id="destination"
                     value={page.headerTitle.replace(" Packing List", "")}
-                    placeholder="e.g. Tokyo, Paris, Iceland"
+                    placeholder="e.g. Tokyo, Paris, Iceland…"
                     required
                     class="h-9 w-full border border-hairline rounded-sm bg-canvas hover:border-hairline-strong focus:border-primary px-3 text-sm text-ink outline-none transition-colors"
                   />
@@ -758,7 +758,7 @@ const faqSchema = {
                 </svg>
               </div>
               <h3 class="font-sans font-semibold text-lg text-ink">
-                Analyzing your trip...
+                Analyzing your trip…
               </h3>
               <p class="text-body text-xs max-w-[280px] leading-relaxed">
                 Applying local-first packing algorithms and preparing your
@@ -941,7 +941,7 @@ const faqSchema = {
                   <input
                     type="text"
                     id="new-category-input"
-                    placeholder="e.g. Baby Gear, Photography Accessories"
+                    placeholder="e.g. Baby Gear, Photography Accessories…"
                     class="h-8 w-full border border-hairline rounded-sm bg-canvas hover:border-hairline-strong px-3 text-xs text-ink outline-none"
                   />
                 </div>
@@ -2135,6 +2135,8 @@ const faqSchema = {
       const delBtn = document.createElement("button");
       delBtn.className =
         "opacity-0 group-hover:opacity-100 text-mute hover:text-error transition-all p-1 no-print cursor-pointer";
+      delBtn.setAttribute("aria-label", "Delete saved trip");
+      delBtn.setAttribute("type", "button");
       delBtn.innerHTML = `
         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <line x1="18" y1="6" x2="6" y2="18"></line>

@@ -38,8 +38,10 @@ import Footer from "../components/Footer.astro";
               <input 
                 type="text" 
                 id="contact-name" 
+                name="name"
+                autocomplete="name"
                 required 
-                placeholder="Your Name" 
+                placeholder="e.g. John Doe…" 
                 class="h-9 w-full border border-hairline rounded-sm bg-canvas hover:border-hairline-strong focus:border-primary px-3 text-xs text-ink outline-none transition-colors"
               />
             </div>
@@ -50,8 +52,11 @@ import Footer from "../components/Footer.astro";
               <input 
                 type="email" 
                 id="contact-email" 
+                name="email"
+                autocomplete="email"
+                spellcheck="false"
                 required 
-                placeholder="you@example.com" 
+                placeholder="e.g. you@example.com…" 
                 class="h-9 w-full border border-hairline rounded-sm bg-canvas hover:border-hairline-strong focus:border-primary px-3 text-xs text-ink outline-none transition-colors"
               />
             </div>
@@ -76,9 +81,10 @@ import Footer from "../components/Footer.astro";
             <label for="contact-message" class="text-xs font-medium text-body">Message</label>
             <textarea 
               id="contact-message" 
+              name="message"
               required 
               rows="5" 
-              placeholder="How can we help you?" 
+              placeholder="e.g. I have a suggestion for the generator…" 
               class="w-full border border-hairline rounded-sm bg-canvas hover:border-hairline-strong focus:border-primary p-3 text-xs text-ink outline-none transition-colors resize-none"
             ></textarea>
           </div>

@@ -10,6 +10,7 @@ interface Props {
 	ogUrl?: string;
 	ogImage?: string;
 	appendMonthYear?: boolean;
+	noindex?: boolean;
 }
 
 const {
@@ -18,87 +19,121 @@ const {
 	metaKeywords = "Trip Packing List, beach trip packing list, road trip packing list, ski trip packing list, trip packing list, weekend trip packing list, international trip packing list, business trip packing list, work trip packing list, camping trip packing list, family ski trip packing list, 4 day trip packing list, 2 week trip packing list female, overnight trip packing list, 3 day trip packing list, hiking trip packing list, week trip packing list, lake trip packing list, disney trip packing list, 5 day trip packing list, family road trip packing list, luggage weight tracker, travel checklist generator, bag weight calculator, airline luggage weight estimator, how to pack under 50 lbs, luggage weight calculator, airline baggage scale",
 	ogTitle,
 	ogDescription,
-	ogUrl = "https://tripspackinglist.com",
+	ogUrl,
 	ogImage = "https://tripspackinglist.com/og-image.png",
-	appendMonthYear = false
+	appendMonthYear = false,
+	noindex = false,
 } = Astro.props;
 
-const currentMonth = new Date().toLocaleString('en-US', { month: 'long' });
+const currentMonth = new Date().toLocaleString("en-US", { month: "long" });
 const currentYear = new Date().getFullYear();
 const monthYearStr = `${currentMonth} ${currentYear}`;
 
 const finalTitle = appendMonthYear ? `${title} (${monthYearStr})` : title;
-const finalDescription = appendMonthYear ? `${description} (Updated ${monthYearStr})` : description;
+const finalDescription = appendMonthYear
+	? `${description} (Updated ${monthYearStr})`
+	: description;
 
-const finalOgTitle = ogTitle ? (appendMonthYear ? `${ogTitle} (${monthYearStr})` : ogTitle) : finalTitle;
-const finalOgDescription = ogDescription ? (appendMonthYear ? `${ogDescription} (Updated ${monthYearStr})` : ogDescription) : finalDescription;
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://tripspackinglist.com");
+const finalOgTitle = ogTitle
+	? appendMonthYear
+		? `${ogTitle} (${monthYearStr})`
+		: ogTitle
+	: finalTitle;
+const finalOgDescription = ogDescription
+	? appendMonthYear
+		? `${ogDescription} (Updated ${monthYearStr})`
+		: ogDescription
+	: finalDescription;
+const canonicalURL = new URL(
+	Astro.url.pathname,
+	Astro.site || "https://tripspackinglist.com",
+);
+const finalOgUrl = ogUrl || canonicalURL.href;
 ---
 
 <!doctype html>
 <html lang="en" class="scroll-smooth overflow-x-hidden">
 	<head>
 		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-HPDZZ06HRX" is:inline></script>
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-HPDZZ06HRX"
+			is:inline></script>
 		<script is:inline>
 			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
 
-			gtag('config', 'G-HPDZZ06HRX');
+			gtag("config", "G-HPDZZ06HRX");
 		</script>
 
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		
+
 		<!-- SEO Meta Tags -->
 		<title>{finalTitle}</title>
 		<meta name="description" content={finalDescription} />
 		<link rel="canonical" href={canonicalURL} />
+		{noindex && <meta name="robots" content="noindex, nofollow" />}
 		<meta name="keywords" content={metaKeywords} />
 		<meta name="author" content="Trip Packing List" />
-		
+
 		<!-- OpenGraph Meta Tags -->
 		<meta property="og:title" content={finalOgTitle} />
 		<meta property="og:description" content={finalOgDescription} />
 		<meta property="og:type" content="website" />
-		<meta property="og:url" content={ogUrl} />
+		<meta property="og:url" content={finalOgUrl} />
 		<meta property="og:site_name" content="Trip Packing List" />
 		<meta property="og:image" content={ogImage} />
-		
+
 		<!-- Twitter Card Meta Tags -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={finalOgTitle} />
 		<meta name="twitter:description" content={finalOgDescription} />
 		<meta name="twitter:site" content="@tripspackinglist" />
 		<meta name="twitter:image" content={ogImage} />
-		
+
 		<!-- Favicons -->
-		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+		<link
+			rel="icon"
+			type="image/png"
+			href="/favicon-96x96.png"
+			sizes="96x96"
+		/>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="shortcut icon" href="/favicon.ico" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="/apple-touch-icon.png"
+		/>
 		<meta name="apple-mobile-web-app-title" content="Trip Packing" />
 		<link rel="manifest" href="/site.webmanifest" />
 		<meta name="generator" content={Astro.generator} />
 
 		<!-- Google Fonts for Geist and Geist Mono -->
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<!-- Theme Detection Script -->
 		<script is:inline>
-			(function() {
-				const savedTheme = localStorage.getItem('theme');
-				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-				if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-					document.documentElement.classList.add('dark');
-				} else if (savedTheme === 'light') {
-					document.documentElement.classList.add('light');
+			(function () {
+				const savedTheme = localStorage.getItem("theme");
+				const prefersDark = window.matchMedia(
+					"(prefers-color-scheme: dark)",
+				).matches;
+				if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+					document.documentElement.classList.add("dark");
+				} else if (savedTheme === "light") {
+					document.documentElement.classList.add("light");
 				}
 			})();
 		</script>
 	</head>
-	<body class="min-h-screen flex flex-col bg-canvas-soft text-ink select-text selection:bg-primary selection:text-on-primary overflow-x-hidden">
+	<body
+		class="min-h-screen flex flex-col bg-canvas-soft text-ink select-text selection:bg-primary selection:text-on-primary overflow-x-hidden"
+	>
 		<slot />
 	</body>
 </html>
